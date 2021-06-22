@@ -1,0 +1,27 @@
++ Business
+	- id
+	- username
+	- password
+	- email
+	- company_name
+	- company_city
+	- company_logo
+	- phone_number
+
++ Menus
+	- id
+	- company_id
+	- item_name
+	- item_picture
+	- item_price
+	- item_categorie
+	- item_views
+	- item_offer
+	- date_added
+
++ Orders
+	- id
+	- menu_id (, )
+	- date of receival
+	- time of receival
+	- status
