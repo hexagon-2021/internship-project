@@ -5,23 +5,19 @@
 	- email
 	- company_name
 	- company_city
-	- company_logo
+	- company_logo (Dashboard)
 	- phone_number
 
-+ Menus
++ Product
 	- id
-	- company_id
+	- business_id (fk - foreign key)
+	- item_offer (true || false)
 	- item_name
 	- item_picture
+	- item_ingridients (multiple)
 	- item_price
-	- item_categorie
-	- item_views
-	- item_offer
+	- item_categorie (multiple)
+	- item_views (ip based)
+	- item_sale
 	- date_added
 
-+ Orders
-	- id
-	- menu_id (, )
-	- date of receival
-	- time of receival
-	- status
