@@ -1,3 +1,4 @@
+
 CREATE TABLE business (
   id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
   username VARCHAR(256) NOT NULL,
@@ -22,4 +23,4 @@ CREATE TABLE PRODUCT (
   item_views INT(11) NOT NULL,
   item_sale INT(11) NOT NULL,
   date_added VARCHAR(256) NOT NULL
-)
+);
