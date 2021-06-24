@@ -7,7 +7,7 @@ CREATE TABLE business (
   company_city VARCHAR(256) NOT NULL,
   company_logo VARCHAR(256),
   phone_number VARCHAR(256) NOT NULL
-)
+);
 
 CREATE TABLE PRODUCT (
   id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
@@ -22,4 +22,4 @@ CREATE TABLE PRODUCT (
   item_views INT(11) NOT NULL,
   item_sale INT(11) NOT NULL,
   date_added VARCHAR(256) NOT NULL
-)
+);
