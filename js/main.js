@@ -9,3 +9,6 @@ $(window).on("resize", function() {
 $("#navbar > div > i").click(function() {
   $("#navbar > div > ul").toggle(300);
 });
+$("#navbar > div > i").click(function() {
+  $("#navbar > div > ul").toggle(300);
+})
