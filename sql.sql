@@ -43,3 +43,6 @@ ALTER TABLE `product`
 
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`id`);
+  
+ALTER TABLE `business` ADD `full_name` VARCHAR(256) NOT NULL AFTER `password`;
+
