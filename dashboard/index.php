@@ -1,4 +1,9 @@
 <?php include '../includes/dbh.inc.php'; ?>
+<?php require_once ('../includes/functions.inc.php'); ?>
+<?php 
+    $_SESSION["trackingURL"] = $_SERVER["PHP_SELF"];
+    confirmLogin();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

@@ -1,3 +1,6 @@
+<?php require_once("../../includes/dbh.inc.php") ?>
+<?php require_once("../../includes/functions.inc.php") ?>
+<?php require_once("../../includes/session.php") ?>
 <?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; ?>
 <section class="dashboard_categorie" id="products">
   <div class="container">
@@ -61,6 +64,10 @@
           </th>
         </tr>
       </table>
+      <?php 
+        echo errorMessage();
+        echo successMessage(); 
+      ?>
     </div> <!---display_products -->
   </div> <!-- container -->
 </section> <!-- #products -->

@@ -142,3 +142,11 @@ function loginUser($conn, $username, $pwd){
 		exit();
 	}
 }
+function confirmLogin(){
+	if(isset($_SESSION['userid'])){
+		return true;
+	}else{
+		//$_SESSION["errorMessage"] = "Login is Required";
+		header("location: ../login.php");
+	}
+}
