@@ -1,0 +1,412 @@
+body{
+			/*background-color:white;*/
+			background-color:#D5DBB3;
+		}
+    .login-items{
+      display: flex;
+        flex-direction: column;
+        max-width: 25%;
+        margin: 0 auto;
+        border:solid #EBA83A  1px;
+        padding: 80px;
+        box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+        background-color:#D5DBB3;
+    }
+.inputL{
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 25px;
+  border:none;
+  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+  color: #EBA83A;
+  font-size: 15px;
+  font-weight: bold;
+}
+		.signup-items{
+			display: flex;
+    		flex-direction: column;
+    		max-width: 25%;
+    		margin: 0 auto;
+    		border:solid #EBA83A  1px;
+    		padding: 80px;
+    		box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+    		background-color:#D5DBB3;
+		}
+		.input{
+			margin-top: 20px;
+			padding-top: 20px;
+			padding-bottom: 25px;
+			border:none;
+			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+			color: #EBA83A;
+			font-size: 15px;
+			font-weight: bold;
+			
+		}
+		.signinSignupButton{
+			margin-top: 20px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			background-color: #EBA83A;
+			border:none;
+			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+			color: white;
+			/*font-family: Arial, Helvetica, sans-serif;*/
+			font-size: 20px;
+			font-weight: bold;
+		}
+		.signinSignupButton:hover{
+			background-color: #BB371A;
+
+		}
+		.pointer {cursor: pointer;}
+
+		::placeholder{
+			color: #EBA83A;
+			font-size: 15px;
+		}
+		p{
+			color: #BB371A;
+			font-weight: bold;
+			font-size: 15px;
+		}
+
+		@media (max-width: 361px) {
+   			 .signup-items{
+				display: flex;
+    			flex-direction: column;
+    			max-width: 80%;
+    			margin: 0 auto;
+    			border:solid #EBA83A 1px;
+    			padding: 40px;
+    			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+			}
+      .login-items{
+      display: flex;
+        flex-direction: column;
+        max-width: 80%;
+        margin: 0 auto;
+        border:solid #EBA83A  1px;
+        padding: 40px;
+        box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+        background-color:#D5DBB3;
+    }
+  		}
+  		@media (max-width: 720px) {
+   			 .signup-items{
+				display: flex;
+    			flex-direction: column;
+    			max-width: 80%;
+    			margin: 0 auto;
+    			border:solid #EBA83A 1px;
+    			padding: 40px;
+    			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+			}
+      .login-items{
+      display: flex;
+        flex-direction: column;
+        max-width: 80%;
+        margin: 0 auto;
+        border:solid #EBA83A  1px;
+        padding: 40px;
+        box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+        background-color:#D5DBB3;
+    }
+  		}
+  		@media (max-width: 1100px) {
+   			 .signup-items{
+				display: flex;
+    			flex-direction: column;
+    			max-width: 60%;
+    			margin: 0 auto;
+    			border:solid #EBA83A 1px;
+    			padding: 40px;
+    			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+			}
+      .login-items{
+      display: flex;
+        flex-direction: column;
+        max-width: 60%;
+        margin: 0 auto;
+        border:solid #EBA83A  1px;
+        padding: 40px;
+        box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+        background-color:#D5DBB3;
+    }
+  		}
+  		@media (min-width: 1100px) {
+   			 .signup-items{
+				display: flex;
+    			flex-direction: column;
+    			max-width: 40%;
+    			margin: 0 auto;
+    			border:solid #EBA83A 1px;
+    			padding: 40px;
+    			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+			}
+      .login-items{
+      display: flex;
+        flex-direction: column;
+        max-width: 40%;
+        margin: 0 auto;
+        border:solid #EBA83A  1px;
+        padding: 40px;
+        box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+        background-color:#D5DBB3;
+    }
+  		}
+  		.signup{
+  			color: #EBA83A;
+  			text-align: center;
+  			font-weight: bold;
+  			font-family: Arial, Helvetica, sans-serif;
+  		}
+  		.login{
+  			color: #EBA83A;
+  			text-align: center;
+  			font-weight: bold;
+  			font-family: Arial, Helvetica, sans-serif;
+  		}
+  		.dontHaveAnAcc{
+  			display: flex;
+    		flex-direction: column;
+    		max-width: 25%;
+    		margin: 15px auto;
+    		border:solid #EBA83A  1px;
+    		padding: 40px;
+    		box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+    		background-color:#D5DBB3;
+    		text-align: center;
+  		}
+  		.dontHaveAnAcc a{
+  			font-weight: bold;
+  			font-size: 20px;
+  			font-family: Arial, Helvetica, sans-serif;
+  			color: #BB371A;
+  			text-decoration: none;
+  		}
+  		.dontHaveAnAcc h1{
+  			font-weight: bold;
+  			font-size: 20px;
+  			font-family: Arial, Helvetica, sans-serif;
+  			color: #EBA83A;
+  		}
+
+  		.haveanAcc{
+  			display: flex;
+    		flex-direction: column;
+    		max-width: 25%;
+    		margin: 15px auto;
+    		border:solid #EBA83A  1px;
+    		padding: 40px;
+    		box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, .2);
+    		background-color:#D5DBB3;
+    		text-align: center;
+  		}
+  		.haveanAcc a{
+  			font-weight: bold;
+  			font-size: 20px;
+  			font-family: Arial, Helvetica, sans-serif;
+  			color: #BB371A;
+  			text-decoration: none;
+  		}
+  		.haveanAcc h1{
+  			font-weight: bold;
+  			font-size: 20px;
+  			font-family: Arial, Helvetica, sans-serif;
+  			color: #EBA83A;
+  		}
+
+
+      /*drini*/
+
+      /* General */
+
+@import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
+
+:root {
+  --first-color: #eba83a;
+  --secondary-color: #bb371a;
+  --third-color: #fff8d9;
+  --fourth-color: #d5dbb3;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  width: 100%;
+}
+
+.row::after {
+  clear: both;
+  content: "";
+  box-sizing: border-box;
+}
+.col-1 {
+  width: 8.33%;
+}
+.col-2 {
+  width: 16.66%;
+}
+.col-3 {
+  width: 25%;
+}
+.col-4 {
+  width: 33.33%;
+}
+.col-5 {
+  width: 41.66%;
+}
+.col-6 {
+  width: 50%;
+}
+.col-7 {
+  width: 58.33%;
+}
+.col-8 {
+  width: 66.66%;
+}
+.col-9 {
+  width: 75%;
+}
+.col-10 {
+  width: 83.33%;
+}
+.col-11 {
+  width: 91.66%;
+}
+.col-12 {
+  width: 100%;
+}
+
+nav#navbar {
+  background-color: var(--first-color);
+  margin: 0;
+  padding: 10px 15px;
+  border-bottom: 4px solid var(--secondary-color);
+}
+
+nav#navbar .logo > span {
+  cursor: pointer;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  bottom: 20px;
+  font-size: 24px;
+  color: var(--secondary-color);
+  font-family: "Dela Gothic One", cursive;
+  letter-spacing: 0.5px;
+}
+
+nav#navbar .logo img {
+  margin-top: 5px;
+}
+
+nav#navbar ul.navbar_ul_items {
+  display: none;
+  width: 102%;
+  list-style-type: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+nav#navbar ul.navbar_ul_items li {
+  width: 100%;
+  padding: 0 20px 0 0;
+  margin: 5px 0 5px -15px;
+  background: var(--fourth-color);
+  font-weight: bold;
+}
+
+nav#navbar ul.navbar_ul_items li.active,
+nav#navbar ul.navbar_ul_items li.active a,
+nav#navbar ul.navbar_ul_items li.active i {
+  background: var(--secondary-color);
+  color: var(--fourth-color);
+}
+
+nav#navbar ul.navbar_ul_items li:hover,
+nav#navbar ul.navbar_ul_items li:hover i {
+  background: var(--secondary-color);
+  color: var(--fourth-color);
+}
+
+nav#navbar ul.navbar_ul_items li:hover a {
+  color: var(--fourth-color);
+}
+
+nav#navbar ul.navbar_ul_items a {
+  display: block;
+  width: 64%;
+  padding: 15px 0 15px 40%;
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+nav#navbar ul.navbar_ul_items li a i {
+  color: var(--secondary-color);
+}
+
+nav#navbar i.bar_icon {
+  cursor: pointer;
+  margin-top: -3.5rem;
+  float: right;
+  color: var(--secondary-color);
+  background-color: var(--fourth-color);
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  border-radius: 5px;
+}
+
+nav#navbar i.bar_icon:hover {
+  color: var(--fourth-color);
+  background-color: var(--secondary-color);
+}
+
+/* Dashboard */
+
+
+@media (min-width: 1024px) {
+  nav#navbar .logo > span {
+    font-size: 20px;
+  }
+  #navbar div h1.logo img {
+    width: 20px;
+  }
+  #navbar div h1.logo span {
+    margin-top: -10px;
+  }
+  nav#navbar i.bar_icon {
+    display: none;
+  }
+  #navbar > div.container {
+    margin: 0 auto;
+    padding-left: 3%;
+  }
+  nav#navbar ul.navbar_ul_items {
+    margin-top: -55px;
+    display: block;
+    width: 70%;
+    float: right;
+  }
+  nav#navbar ul.navbar_ul_items li {
+    text-align: center;
+    margin: 0;
+    display: inline;
+    width: 20%;
+    border: 2px solid var(--secondary-color);
+    float: left;
+  }
+  nav#navbar ul.navbar_ul_items li a {
+    padding: 10px 10px;
+    margin: 0;
+    width: 100%;
+    font-size: 15px;
+  }
+}

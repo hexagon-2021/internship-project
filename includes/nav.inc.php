@@ -1,4 +1,4 @@
-<?php include 'includes/dbh.php'; ?>
+<?php include 'includes/dbh.inc.php'; ?>
 <nav id="navbar">
   <div class="container">
     <div class="logo">
@@ -10,6 +10,8 @@
       <li class="active"><a href="#"><i class="fas fa-hand-pointer"></i> Zgjedh Qytetin</a></li>
       <li><a href="#about"><i class="fas fa-users"></i> Rreth Nesh</a></li>
       <li><a href="#contact"><i class="fas fa-address-book"></i> Kontakto</a></li>
+      <li><a href="signupForm.php"> Regjistrohu</a></li>
+      
     </ul>
   </div> <!-- container -->
 </nav>
