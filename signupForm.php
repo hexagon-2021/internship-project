@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-<?php include 'includes/nav.inc.php' ?>	
+<?php $active="Sign Up"; include 'includes/nav.inc.php' ?>	
 	<form action="includes/signup.inc.php" method="post">
 		<div class="signup-items">
 			<h1 class="signup">Sign Up</h1>
@@ -51,6 +51,8 @@
 		<div class="haveanAcc">
 			<h1>Have an account? <a href="login.php">Log in</a></h1>
 		</div>
-	
+	<script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

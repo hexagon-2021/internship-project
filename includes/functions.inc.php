@@ -138,7 +138,7 @@ function loginUser($conn, $username, $pwd){
 		
 		$_SESSION["userid"] = $uidExists["id"];
 		$_SESSION["useruid"] = $uidExists["username"];
-		header("location: ../dashboard.php");
+		header("location: ../dashboard");
 		exit();
 	}
 }
