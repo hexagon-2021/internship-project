@@ -1,9 +1,9 @@
 <?php
 require_once('functions.inc.php');
 require_once('session.php');
-if(isset($_SESSION['userid'])){
-    		header('location:dashboard.php');
-		}
+	if(isset($_SESSION['userid'])){
+		header('location: ../dashboard');
+	}
 	if (isset($_POST["submit"])) {
 	
 		$username = $_POST["uid"];
