@@ -1,0 +1,1 @@
+<li class='logout'><a href='includes/logout.inc.php'> Log out</a></li>
