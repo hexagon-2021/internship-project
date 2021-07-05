@@ -1,73 +1,79 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
 <?php require_once("../../includes/functions.inc.php") ?>
 <?php require_once("../../includes/session.php") ?>
-<?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; ?>
 <section class="dashboard_categorie" id="products">
   <div class="container">
     <button id="add_product_toggler">Shto Produkt</button>
     <h1 class="dashboard_section_title" id="add_products_section_title">Shto Produkt</h1>
     <div id="add-form-div">
-      <form id="add-form" action="products/add_food.inc.php" method="POST" enctype="multipart/form-data">
-        <input class="input-form" type="text" name="item_name" placeholder="Item Name">
-        <input class="input-form" type="textarea" name="item_ingridients"  placeholder="Item Ingridients">
-        <input class="input-form" type="number" name="item_price" placeholder="Item Price" step=".01">
-        <select class="input-form" name="item_categorie">
+      <form id="add-form" action="products/action.php?p=add" method="POST" enctype="multipart/form-data">
+        <input class="input-form" type="text" id="item_name" name="item_name" placeholder="Item Name">
+        <input class="input-form" type="textarea" id="item_ingridients" name="item_ingridients"  placeholder="Item Ingridients">
+        <input class="input-form" type="number" id="item_price" name="item_price" placeholder="Item Price" step=".01">
+        <select class="input-form" id="item_categorie" name="item_categorie">
           <?php
             foreach ($food_categories as $food_categorie) {
               echo "<option value='$food_categorie'>$food_categorie</option>";
             }
           ?>
         </select>
-        <input class="input-form" class="custum-file-input" type="file" name="image" >
-        <button type="submit" name="submit" class="">Submit</button>
+        <input class="input-form" class="custum-file-input" type="file" id="image" name="image" >
+        <button type="submit" onclick="saveData()" >Submit</button>
       </form>
     </div> <!-- add-forme -->
     <h1 class="dashboard_section_title">Shiqo Produktet</h1>
-    <div class="display_products" style="overflow-x: auto;">
-      <table>
-        <tr>
-          <th>Emri i Produktit</th>
-          <th>Foto</th>
-          <th>Perberesit</th>
-          <th>Cmimi</th>
-          <th>Kategoria</th>
-          <th>Shiqimet</th>
-          <th>Data</th>
-          <th>Edito Produktin</th>
-          <th>Fshij Produktin</th>
-        </tr>
-        <tr>
-          <th><input type="text" name="view_product_edit_product_name" class="view_product_edit_component" value="test" /></th>
-          <th><img width="50" src="products/uploads/polygon1Square__800_800.png" alt="item_picture" /></th>
-          <th><input type="text" name="view_product_edit_product_ingridients" class="view_product_edit_component" value="test, test, test" /></th>
-          <th><input type="number" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="5.00" /> €</th>
-          <th>
-            <select name="view_product_edit_product_categorie" class="view_product_edit_component">
-              <?php
-                $temporary_categorie = "Pizza";
-                echo "<option value='$temporary_categorie'>$temporary_categorie</option>";
-                foreach ($food_categories as $food_categorie) {
-                  if ($temporary_categorie != $food_categorie) {
-                    echo "<option value='$food_categorie'>$food_categorie</option>";
-                  }
-                }
-              ?>
-            </select>
-          </th>
-          <th>2</th>
-          <th>29-06-2021</th>
-          <th>
-            <button class="edit_product">Edito</button>
-          </th>
-          <th>
-            <button class="delete_product">Fshij</button>
-          </th>
-        </tr>
-      </table>
-      <?php 
+    <div id="display_products" class="display_products" style="overflow-x: auto;">
+            
+    </div>
+  </div> <!-- container -->
+  <?php 
         echo errorMessage();
         echo successMessage(); 
-      ?>
-    </div> <!---display_products -->
-  </div> <!-- container -->
+   ?>
 </section> <!-- #products -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	function saveData(){
+		var item_name = $('#item_name').val();
+		var item_ingridients = $('#item_ingridients').val();
+		var item_price = $('#item_price').val();
+		var item_categorie = $('#item_categorie').val();
+		var image = $('#image').val();
+		$.ajax({
+			type: "POST",
+			url: "products/action.php?p=add",
+			data: "item_name="+item_name+"&item_ingridients="+item_ingridients+"&item_price="+item_price+"&item_categorie="+item_categorie+"&image="+image,
+			success:function(data){
+				$("#add-form")[0].reset();
+				viewData();
+			}
+		});
+	}
+  function viewData(){
+		$.ajax({
+			url: "products/fetchProduct.inc.php",
+			success: function(data){
+				$('#display_products').html(data);
+				$("#add-form")[0].reset();
+			} 
+		});
+  }
+  function updateData(str){
+		var id = str;
+		var item_name = $('#item_name-'+str).val();
+		var item_ingridients = $('#item_ingridients-'+str).val();
+		var item_price = $('#item_price-'+str).val();
+		var item_categorie = $('#item_categorie-'+str).val();
+		var image = $('#image-'+str).val();
+		$.ajax({
+			type: "POST",
+			url: "action.php?p=edit",
+			data: "item_name="+item_name+"&item_ingridients="+item_ingridients+"&item_price="+item_price+"&item_categorie="+item_categorie+"&image="+image+"&id="+id,
+			success:function(data){
+				viewData();
+			}
+		});
+	}
+</script>
+
