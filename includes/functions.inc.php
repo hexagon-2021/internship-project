@@ -137,8 +137,16 @@ function loginUser($conn, $username, $pwd){
 	else if ($checkPwd === true) {
 		
 		$_SESSION["userid"] = $uidExists["id"];
-		$_SESSION["useruid"] = $uidExists["username"];
+		$_SESSION["username"] = $uidExists["username"];
 		header("location: ../dashboard");
 		exit();
+	}
+}
+function confirmLogin(){
+	if(isset($_SESSION['userid'])){
+		return true;
+	}else{
+		//$_SESSION["errorMessage"] = "Login is Required";
+		header("location: ../login.php");
 	}
 }

@@ -1,4 +1,10 @@
 <?php require_once("../../includes/dbh.inc.php");  ?>
+<?php require_once("../../includes/functions.inc.php");  ?>
+<?php require_once("../../includes/session.php"); ?>
+<?php 
+    $_SESSION["trackingURL"] = $_SERVER["PHP_SELF"];
+    confirmLogin();
+?>
 <?php 
   if(isset($_POST["submit"])){
     $itemName = $_POST["item_name"];
@@ -25,14 +31,15 @@
 
       if($execute = mysqli_stmt_execute($stmt)) {
         move_uploaded_file($_FILES["image"]["tmp_name"], $target);
-        echo "Success";
+        $_SESSION["successMessage"] = "Product added successfully";
         header("location: ../index.php");
         exit();
       }else{
-        echo "failed";
+        $_SESSION["errorMessage"] = "Something went wrong . Try again!";
+        header("location: ../index.php");
       }
     }else{
-      echo "Error Message";
+      $_SESSION["errorMessage"] = "Error Message";
     }
   }
 ?>
