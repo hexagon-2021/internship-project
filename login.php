@@ -14,7 +14,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
-	<?php $active= "Log In"; include 'includes/nav.inc.php' ?>	
+	<?php $active= "Log In"; include 'includes/nav.inc.php'; ?>	
 	
 		<form action="includes/login.inc.php" method="post">
 

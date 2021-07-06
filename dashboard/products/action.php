@@ -50,31 +50,29 @@
         $itemPrice = $_POST["item_price"];
         $itemCategorie = $_POST["item_categorie"];
 
-        if(empty($itemName) || empty($itemIngridients) || empty($itemPrice) || empty($itemCategorie)){
-            $_SESSION["errorMessage"] = "Title can't be empty";
+        if(!empty($_FILES["image"]["name"])){
+            $sql = "UPDATE product
+                SET item_name='$itemName', item_picture = '$image', item_ingridients='$itemIngridients, item_price='$itemPrice', item_categorie='$itemCategorie'
+                WHERE id = '$idFromURL'";
+        }else{
+            $sql = "UPDATE product
+                    SET item_name='$itemName', item_ingridients='$itemIngridients, item_price='$itemPrice', item_categorie='$itemCategorie'
+                    WHERE id = '$idFromURL'";
+        }
+        $Execute = mysqli_query($con, $sql);
+        move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+        if($Execute){
+            $_SESSION["successMessage"] = "Product Updated Successfuly";
             header("location: ../index.php");
         }else{
-            if(!empty($_FILES["image"]["name"])){
-                $sql = "UPDATE product
-                    SET item_name='$itemName', item_picture = '$image', item_ingridients='$itemIngridients, item_price='$itemPrice', item_categorie='$itemCategorie'
-                    WHERE id = '$idFromURL'";
-                }else{
-                    $sql = "UPDATE product
-                            SET item_name='$itemName', item_ingridients='$itemIngridients, item_price='$itemPrice', item_categorie='$itemCategorie'
-                            WHERE id = '$idFromURL'";
-                }
-            $Execute = mysqli_query($con, $sql);
-            move_uploaded_file($_FILES["image"]["tmp_name"], $target);
-            if($Execute){
-                $_SESSION["successMessage"] = "Product Updated Successfuly";
-                header("location: ../index.php");
-            }else{
-                $_SESSION["errorMessage"] = "Something went wrong. Try again!";
-                header("location: ../index.php");
-            }
+            $_SESSION["errorMessage"] = "Something went wrong. Try again!";
+            header("location: ../index.php");
         }
-    } ?>
-        <div class="display_products" style="overflow-x: auto;">
+    }else{
+        $user_id = $_SESSION['userid'];
+        $sql = "SELECT * FROM product WHERE business_id = '$user_id' ORDER BY id desc";
+        $stmt = mysqli_query($conn, $sql) or die('error');
+        if(mysqli_num_rows($stmt) > 0){ ?>
             <table>
                 <tr>
                     <th>Emri i Produktit</th>
@@ -87,34 +85,54 @@
                     <th>Edito Produktin</th>
                     <th>Fshij Produktin</th>
                 </tr>
+                <?php 
+                    while($row = mysqli_fetch_assoc($stmt)){
+                        $id = $row['id'];
+                        $itemName = $row['item_name'];
+                        $itemPrice = $row['item_price'];
+                        $itemIngredients = $row['item_ingridients'];
+                        $itemCategorie = $row['item_categorie'];
+                        $image = $row['item_picture'];
+                        $dateAdded = $row['date_added'];
+                ?>
                 <tr id="tdata">
-                    <th><input type="text" name="view_product_edit_product_name" class="view_product_edit_component" value="test" /></th>
-                    <th><img width="50" src="products/uploads/polygon1Square__800_800.png" alt="item_picture" /></th>
-                    <th><input type="text" name="view_product_edit_product_ingridients" class="view_product_edit_component" value="test, test, test" /></th>
-                    <th><input type="number" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="5.00" /> €</th>
-                    <th>
-                        <select name="view_product_edit_product_categorie" class="view_product_edit_component">
-                            <?php
-                                $temporary_categorie = "Pizza";
-                                echo "<option value='$temporary_categorie'>$temporary_categorie</option>";
-                                foreach ($food_categories as $food_categorie) {
-                                if ($temporary_categorie != $food_categorie) {
-                                    echo "<option value='$food_categorie'>$food_categorie</option>";
-                                }
-                                }
-                            ?>
-                        </select>
-                    </th>
-                    <th>2</th>
-                    <th>29-06-2021</th>
-                    <th>
-                        <button class="edit_product">Edito</button>
-                    </th>
-                    <th>
-                        <button class="delete_product">Fshij</button>
-                    </th>
+                    <form method="POST">
+                        <th><input type="text" id="item_name-<?php echo $row['id']; ?>" name="view_product_edit_product_name" class="view_product_edit_component" value="<?php echo htmlentities($itemName) ?>" /></th>
+                        <th><img width="50" id="item_picture-<?php echo $row['id']; ?>" src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" /></th>
+                        <th><input type="text" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
+                        <th><input type="number" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
+                        <th>
+                            <select id="item_categorie-<?php echo $row['id']; ?>" name="view_product_edit_product_categorie" class="view_product_edit_component">
+                                <?php
+                                    $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; 
+                                    $temporary_categorie = "$itemCategorie";
+                                    echo "<option value='$temporary_categorie'>$temporary_categorie</option>";
+                                    foreach ($food_categories as $food_categorie) {
+                                    if ($temporary_categorie != $food_categorie) {
+                                        echo "<option value='$food_categorie'>$food_categorie</option>";
+                                    }
+                                    }
+                                ?>
+                            </select>
+                        </th>
+                        <th>2</th>
+                        <th><?php echo htmlentities($dateAdded) ?></th>
+                        <th>
+                            <button type="submit" onclick="updateData(<?php echo $row['id']; ?>)" class="edit_product">Edito</button>
+                        </th>
+                        <th>
+                            <button class="delete_product">Fshij</button>
+                        </th>
+                    </form>
                 </tr>
-            </table>
-        </div> <!---display_products -->
-        <?php
+                                
+                    </> <!---display_products -->
+                <?php
+                }  ?>
+            </table> <?php                      
+        }else{
+            $_SESSION["errorMessage"] = "Something went wrong . Try again!";
+            header("location: ../index.php");
+        }
+    }
 ?>

@@ -1,15 +1,14 @@
 $(window).on("resize", function() {
   if ($(window).width() >= 1024) {
-    $("#navbar > div > ul").show(300);
+    $("#navbar > .container > ul").show(300);
   } else {
-    $("#navbar > div > ul").hide(300);
+    $("#navbar > .container > ul").hide(300);
   }
 });
 
 $("#navbar > div > i").click(function() {
-  $("#navbar > div > ul").toggle(300);
+  $("#navbar > .container > ul").toggle(300);
 });
-
 
 var add_product_toggler_text = 0;
 $(document).on('click', "#add_product_toggler", function() {
@@ -20,5 +19,11 @@ $(document).on('click', "#add_product_toggler", function() {
   } else {
     $(this).html("Shto Produkt");
   }
-  add_product_toggler_text +=1 ;
+  add_product_toggler_text +=1;
 });
+
+$(document).ready(function() {
+  let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
+  console.log(width);
+  $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
+})
