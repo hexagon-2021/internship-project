@@ -1,6 +1,7 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
 <?php require_once("../../includes/functions.inc.php") ?>
 <?php require_once("../../includes/session.php") ?>
+<?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; ?>
 <section class="dashboard_categorie" id="products">
   <div class="container">
     <button id="add_product_toggler">Shto Produkt</button>
