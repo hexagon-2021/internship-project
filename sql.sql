@@ -28,6 +28,12 @@ CREATE TABLE `product` (
   `date_added` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `contact_us` (
+  `name` text NOT NULL,
+  `email` text NOT NULL,
+  `message` text NOT NULL
+)
+
 ALTER TABLE `business`
   ADD PRIMARY KEY (`id`);
 
@@ -45,4 +51,5 @@ ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`id`);
   
 ALTER TABLE `business` ADD `full_name` VARCHAR(256) NOT NULL AFTER `password`;
+
 
