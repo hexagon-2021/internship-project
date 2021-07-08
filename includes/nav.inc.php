@@ -13,7 +13,7 @@
         if (isset($_SESSION['userid'])) {
           if ($active != "Dashboard") {
             array_push($list,"Kontakto");
-            array_push($links, "/internship-project/contact");
+            array_push($links, "/internship-project/contact.php");
             array_push($i_class, "address-book");
           }
           array_push($list, "Rreth Nesh", "Dashboard", "Log Out");
@@ -21,7 +21,7 @@
           array_push($i_class, "users", "chart-line", "sign-in-alt");
         } else {
           array_push($list, "Rreth Nesh", "Kontakto", "Log In");
-          array_push($links, "/internship-project/about", "/internship-project/contact", "/internship-project/login.php");
+          array_push($links, "/internship-project/about", "/internship-project/contact.php", "/internship-project/login.php");
           array_push($i_class, "users", "address-book", "sign-in-alt");
         }
         foreach ($list as $i=>$categorie) {
