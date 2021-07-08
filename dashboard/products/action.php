@@ -49,17 +49,18 @@
         $target = "uploads/".basename($_FILES["image"]["name"]);
         $itemPrice = $_POST["item_price"];
         $itemCategorie = $_POST["item_categorie"];
+        $id = $_POST['id'];
 
         if(!empty($_FILES["image"]["name"])){
             $sql = "UPDATE product
-                SET item_name='$itemName', item_picture = '$image', item_ingridients='$itemIngridients, item_price='$itemPrice', item_categorie='$itemCategorie'
-                WHERE id = '$idFromURL'";
+                SET item_name='$itemName', item_picture = '$image', item_ingridients='$itemIngridients', item_price='$itemPrice', item_categorie='$itemCategorie'
+                WHERE id = '$id'";
         }else{
             $sql = "UPDATE product
-                    SET item_name='$itemName', item_ingridients='$itemIngridients, item_price='$itemPrice', item_categorie='$itemCategorie'
-                    WHERE id = '$idFromURL'";
+                    SET item_name='$itemName', item_ingridients='$itemIngridients', item_price='$itemPrice', item_categorie='$itemCategorie'
+                    WHERE id = '$id'";
         }
-        $Execute = mysqli_query($con, $sql);
+        $Execute = mysqli_query($conn, $sql);
         move_uploaded_file($_FILES["image"]["tmp_name"], $target);
         if($Execute){
             $_SESSION["successMessage"] = "Product Updated Successfuly";
@@ -95,10 +96,11 @@
                         $image = $row['item_picture'];
                         $dateAdded = $row['date_added'];
                 ?>
+                
                 <tr id="tdata">
                     <form method="POST">
                         <th><input type="text" id="item_name-<?php echo $row['id']; ?>" name="view_product_edit_product_name" class="view_product_edit_component" value="<?php echo htmlentities($itemName) ?>" /></th>
-                        <th><img width="50" id="item_picture-<?php echo $row['id']; ?>" src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" /></th>
+                        <th><img width="60" id="item_picture-<?php echo $row['id']; ?>" src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" /></th>
                         <th><input type="text" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
                         <th><input type="number" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
                         <th>
@@ -123,9 +125,9 @@
                         <th>
                             <button class="delete_product">Fshij</button>
                         </th>
-                    </form>
+                    </form> 
                 </tr>
-                                
+                      
                     </> <!---display_products -->
                 <?php
                 }  ?>
