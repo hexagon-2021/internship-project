@@ -549,6 +549,52 @@ div.dashboard button#add_product_toggler:hover {
   color: var(--first-color);
 }
 
+/* Rreth Nesh */
+#about_us_section {
+  clear: both;
+}
+#about_us_section .container {
+  width: 90%;
+  margin: 0 auto;
+}
+#about_us_section .title {
+  text-align: center;
+  color: var(--secondary-color);
+  font-size: 2rem;
+  font-family: "Dela Gothic One", cursive;
+  letter-spacing: 1px;
+}
+
+#about_us_section p {
+  padding: 0 20px;
+  font-family: sans-serif;
+  letter-spacing: 0.01rem;
+  font-weight: 600;
+  line-height: 1.5rem;
+  font-size: 1.2rem;
+  width: 95%;
+  text-align: justify;
+}
+
+#about_us_section #ratings table {
+  width: 100%;
+  margin: 0 auto;
+  text-align: center;
+  color: var(--secondary-color);
+}
+
+#about_us_section #ratings tr:nth-child(odd) {
+  background: var(--third-color);
+}
+
+#about_us_section #ratings tr:nth-child(even) {
+  background: var(--first-color);
+}
+
+#about_us_section #ratings th {
+  border: 2px solid var(--secondary-color);
+}
+
 @media (min-width: 1024px) {
   nav#navbar .container {
     width: 80%;
@@ -603,6 +649,20 @@ div.dashboard button#add_product_toggler:hover {
   }
   div.dashboard #products table {
     border-collapse: separate;
+  }
+  #about_us_section .title {
+    width: 100%;
+    /* font-size: 20px; */
+    text-align: center;
+    letter-spacing: normal;
+  }
+
+  #about_us_section > div.container {
+    width: 50%;
+  }
+
+  #about_us_section #ratings .rating .rating_stars {
+    left: 66%;
   }
 }
 @media (min-width: 1366px) {
@@ -680,6 +740,19 @@ div.dashboard button#add_product_toggler:hover {
   div.dashboard div.menu img {
     border-radius: 50%;
     border: 2px solid var(--first-color);
+  }
+  #about_us_section > div.container {
+    width: 40%;
+  }
+
+  #ratings > div.rating {
+    width: 80%;
+  }
+}
+
+@media (min-width: 1500px) {
+  #about_us_section #ratings .rating span.rater_date {
+    left: 47%;
   }
 }
 
