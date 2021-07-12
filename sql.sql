@@ -48,5 +48,5 @@ ALTER TABLE `product`
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`id`);
 
-ALTER TABLE `business` ADD `pending` TINYINT(1) NOT NULL AFTER `phone_number`;
+ALTER TABLE `business` ADD `aproved` TINYINT(1) NOT NULL AFTER `phone_number`;
 
