@@ -1,5 +1,6 @@
 <?php require_once('../includes/dbh.inc.php'); ?>
 <?php require_once('../includes/functions.inc.php'); ?>
+<?php if (isset($_SESSION['admin'])) {header("Location: ../admin/index.php");} ?>
 <?php if (isset($_SESSION['userid'])) { ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,6 +23,7 @@
       <?php 
         $dashboard_categories = ["Produktet", "Edito Profilin"];
         $dashboard_categories_files_name = ["products", "profile_edit"];
+        $i_class = ["fab fa-product-hunt", "fas fa-user-edit"];
       ?>
       <img src="../includes/images/profile_pictures/mcd.jpg" alt="company_picture" width="200px" />
       <h3 class="company_info_component" id="company_info_name">
@@ -44,8 +46,11 @@
       </div> #wrapper -->
       
       <div id="menu_actions">
-        <button value="products" class="menu_actions_btn" id="menu_actions_btn_products"><i class="fab fa-product-hunt"></i> Produktet</button>
-        <button value="profile_edit" class="menu_actions_btn" id="menu_actions_btn_profile_edit"><i class="fas fa-user-edit"></i> Profili</button>
+        <?php 
+          foreach ($dashboard_categories as $i=>$dashboard_categorie) {
+            echo "<button value='". $dashboard_categories_files_name[$i] ."' class='menu_actions_btn'><i class='".$i_class[$i]."'></i> $dashboard_categorie</button>";
+          }
+        ?>
       </div> <!-- #menu_actions -->
     </div> <!-- menu -->
     <div class="main">
