@@ -33,7 +33,7 @@ CREATE TABLE `contact_us` (
   `name` text NOT NULL,
   `email` text NOT NULL,
   `message` text NOT NULL
-)
+);
 
 CREATE TABLE ratings (
   `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
