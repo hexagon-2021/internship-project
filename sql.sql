@@ -34,15 +34,9 @@ CREATE TABLE `contact_us` (
   `message` text NOT NULL
 )
 
-ALTER TABLE `business`
-  ADD PRIMARY KEY (`id`);
-
 ALTER TABLE `product`
   ADD PRIMARY KEY (`id`),
   ADD KEY `business_id` (`business_id`);
-
-ALTER TABLE `business`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 ALTER TABLE `product`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
