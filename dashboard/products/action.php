@@ -132,7 +132,7 @@
             </table> <?php                      
         }else{
             $_SESSION["errorMessage"] = "Something went wrong . Try again!";
-            header("location: ../index.php");
+            echo "<table></table>";
         }
     }
 ?>
