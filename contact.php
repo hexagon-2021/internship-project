@@ -76,20 +76,24 @@
 	</style>
 </head>
 <body>
-	<form method="POST" action="includes/contact.inc.php">
-		<h1 class="contactUs">Contact Us</h1>
-	<h1 class="contactUsTxt">Got a question ? We'd love to here from you . Send us a message<br> and we'll respond as soon as possible. </h1>
+	<div style="clear: both;">
+		<form method="POST" action="includes/contact.inc.php">
+			<h1 class="contactUs">Contact Us</h1>
+			<h1 class="contactUsTxt">Got a question ? We'd love to here from you . Send us a message<br> and we'll respond as soon as possible. </h1>
 
-	<div class="contactField">
-		<h1>Name</h1>
-		<input type="text" name="name" placeholder="Name" class="inputC">
-		<h1>Email addres</h1>
-		<input type="text" name="email" placeholder="Email" class="inputC">
-		<h1>Message</h1>
-		<input type="text" name="message" placeholder="Message" class="inputC"><br>
-		<button type="submit" name="submit" class="contactButton pointer">Send Message</button>
+			<div class="contactField">
+				<h1>Name</h1>
+				<input type="text" name="name" placeholder="Name" class="inputC">
+				<h1>Email addres</h1>
+				<input type="text" name="email" placeholder="Email" class="inputC">
+				<h1>Message</h1>
+				<input type="text" name="message" placeholder="Message" class="inputC"><br>
+				<button type="submit" name="submit" class="contactButton pointer">Send Message</button>
+			</div>
+		</form>
 	</div>
-	</form>
 	<script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>
