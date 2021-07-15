@@ -7,10 +7,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard</title>
+  <title>Admin</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
   <?php 
@@ -19,8 +17,9 @@
   ?>
   <div class="dashboard" id="admin_dashboard">
     <div class="menu">
+      <h1 class='menu_title'>Super Admin</h1>
       <?php 
-        $dashboard_categories = ["Në Pritje"];
+        $dashboard_categories = ["Në Pritje";
         $dashboard_categories_files_name = ["pending"];
         $i_class = ["fas fa-clipboard-check"];
       ?>
@@ -47,12 +46,15 @@
       </div> <!-- content -->
     </div> <!-- main -->
   </div> <!-- .dashboard -->
+
+  
   <script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>
- <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
   <script src="../js/dashboard.js"></script>
   <script src="../js/main.js"></script>
   <script>
     $(document).ready(function() {
+      $("button.menu_actions_btn[value='pending']").addClass("active_action");
       $(".main > .content").load("pending/main.php");
     });
   </script>
