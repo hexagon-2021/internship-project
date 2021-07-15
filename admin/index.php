@@ -19,7 +19,7 @@
     <div class="menu">
       <h1 class='menu_title'>Super Admin</h1>
       <?php 
-        $dashboard_categories = ["Në Pritje";
+        $dashboard_categories = ["Në Pritje"];
         $dashboard_categories_files_name = ["pending"];
         $i_class = ["fas fa-clipboard-check"];
       ?>
