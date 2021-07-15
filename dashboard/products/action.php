@@ -31,27 +31,28 @@
             if($execute = mysqli_stmt_execute($stmt)) {
                 move_uploaded_file($_FILES["image"]["tmp_name"], $target);
                 $_SESSION["successMessage"] = "Product added successfully";
-                header("location: ../index.php");
+                //header("location: ../index.php");
                 exit();
             }else{
                 $_SESSION["errorMessage"] = "Something went wrong . Try again!";
-                header("location: ../index.php");
+                //header("location: ../index.php");
             }
             }else{
             $_SESSION["errorMessage"] = "Error Message";
-            header("location: ../index.php");
+            //header("location: ../index.php");
             }
         }
     }else if($page == 'edit'){
         $itemName = $_POST["item_name"];
         $itemIngridients = $_POST["item_ingridients"];
-        $image = $_FILES["image"]["name"];
+        $image = $_POST["image"];
         $target = "uploads/".basename($_FILES["image"]["name"]);
         $itemPrice = $_POST["item_price"];
         $itemCategorie = $_POST["item_categorie"];
         $id = $_POST['id'];
+        
 
-        if(!empty($_FILES["image"]["name"])){
+        if(!empty($image)){
             $sql = "UPDATE product
                 SET item_name='$itemName', item_picture = '$image', item_ingridients='$itemIngridients', item_price='$itemPrice', item_categorie='$itemCategorie'
                 WHERE id = '$id'";
@@ -60,14 +61,22 @@
                     SET item_name='$itemName', item_ingridients='$itemIngridients', item_price='$itemPrice', item_categorie='$itemCategorie'
                     WHERE id = '$id'";
         }
+
         $Execute = mysqli_query($conn, $sql);
         move_uploaded_file($_FILES["image"]["tmp_name"], $target);
         if($Execute){
-            $_SESSION["successMessage"] = "Product Updated Successfuly";
-            header("location: ../index.php");
+            $_SESSION["successMessage"] = $target."Product Updated Successfuly";
+            
         }else{
             $_SESSION["errorMessage"] = "Something went wrong. Try again!";
-            header("location: ../index.php");
+        }
+    }else if($page == 'delete'){
+        $id=$_GET['id'] ;
+        $sql = "DELETE FROM product WHERE id='$id'";
+        if(mysqli_query($conn, $sql)){
+            echo "Records were deleted successfully.";
+        } else{
+            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
         }
     }else{
         $user_id = $_SESSION['userid'];
@@ -98,13 +107,15 @@
                 ?>
                 
                 <tr id="tdata">
-                    <form method="POST">
-                        <th><input type="text" id="item_name-<?php echo $row['id']; ?>" name="view_product_edit_product_name" class="view_product_edit_component" value="<?php echo htmlentities($itemName) ?>" /></th>
-                        <th><img width="60" id="item_picture-<?php echo $row['id']; ?>" src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" /></th>
-                        <th><input type="text" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
-                        <th><input type="number" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
+                    <form method="POST" id="editForm-<?php echo $row['id'] ?>"  enctype="multipart/form-data">
+                        <th><input name="item_name" type="text" id="item_name-<?php echo $row['id']; ?>" name="view_product_edit_product_name" class="view_product_edit_component" value="<?php echo htmlentities($itemName) ?>" /></th>
                         <th>
-                            <select id="item_categorie-<?php echo $row['id']; ?>" name="view_product_edit_product_categorie" class="view_product_edit_component">
+                            <input name="image" class="transparent_file" id="image-<?php echo $row['id']; ?>" name="image" type="file"/> <img width="60"  src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" />
+                        </th>
+                        <th><input type="text" name="item_ingridients" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
+                        <th><input type="number" name="item_price" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
+                        <th>
+                            <select name="item_categorie" id="item_categorie-<?php echo $row['id']; ?>" name="view_product_edit_product_categorie" class="view_product_edit_component">
                                 <?php
                                     $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; 
                                     $temporary_categorie = "$itemCategorie";
@@ -118,14 +129,19 @@
                             </select>
                         </th>
                         <th>2</th>
-                        <th><?php echo htmlentities($dateAdded) ?></th>
+                            <?php if(strlen($dateAdded) > 11){
+                                            $changeDate = date("d-m-Y", strtotime($dateAdded));
+                                            $dateAdded = substr($changeDate, 0,11);
+                                        } ?>
+                        <th><?php echo htmlentities($dateAdded)?></th>
                         <th>
-                            <button type="submit" onclick="updateData(<?php echo $row['id']; ?>)" class="edit_product">Edito</button>
+                            <button  id="submit" onclick="updateData(<?php echo $row['id']; ?>)" name="submit"  class="edit_product">Edito</button>
                         </th>
+                        
                         <th>
-                            <button class="delete_product">Fshij</button>
+                            <button class="delete_product" onclick="deleteData(<?php echo $row['id']; ?>)">Fshij</button>
                         </th>
-                    </form> 
+                        </form> 
                 </tr>
                       
                     </> <!---display_products -->
@@ -133,8 +149,8 @@
                 }  ?>
             </table> <?php                      
         }else{
-            $_SESSION["errorMessage"] = "Something went wrong . Try again!";
-            header("location: ../index.php");
+            $_SESSION["errorMessage"] = " There is no product ";
+            //header("location: ../index.php");
         }
     }
 ?>

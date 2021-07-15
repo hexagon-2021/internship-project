@@ -73,11 +73,13 @@
   </script>
 <script>
   function viewData(){
+    
 		$.ajax({
 			url: "products/action.php",
 			success: function(data){
 				$('#display_products').html(data);
-				$("#add-form")[0].reset();
+				//$("#add-form")[0].reset();
+        
 			} 
 		});
 	}

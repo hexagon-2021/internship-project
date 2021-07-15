@@ -29,8 +29,8 @@
     </div>
   </div> <!-- container -->
   <?php 
-        // echo errorMessage();
-        // echo successMessage(); 
+         echo errorMessage();
+         echo successMessage(); 
    ?>
 </section> <!-- #products -->
 </body>
@@ -63,20 +63,44 @@
 		});
   }
   function updateData(str){
+	var id = str;
+	console.log(id);
+	$("#editForm-"+id).on('submit', function(e){
+				
+				console.log(id);
+				var item_name = $('#item_name-'+str).val();
+				var item_ingridients = $('#item_ingridients-'+str).val();
+				var item_price = $('#item_price-'+str).val();
+				var item_categorie = $('#item_categorie-'+str).val();
+				var image = $('#image-'+str).val();
+				let parts = image.split("\\");
+				let index = parts[parts.length-1]
+				console.log(index);
+				
+				$.ajax({
+					type: "POST",
+					url: "products/action.php?p=edit",
+					//enctype: 'multipart/form-data',
+					data:  "item_name="+item_name+"&item_ingridients="+item_ingridients+"&item_price="+item_price+"&item_categorie="+item_categorie+"&image="+index+"&id="+id,
+					//data: {item_name:item_name, item_ingridients:item_ingridients, item_price:item_price, item_categorie:item_categorie, image:image},
+					success:function(data){
+						viewData();
+						console.log(index);
+					}
+				});
+		});
+  }
+				
+	function deleteData(str){
 		var id = str;
-		var item_name = $('#item_name-'+str).val();
-		var item_ingridients = $('#item_ingridients-'+str).val();
-		var item_price = $('#item_price-'+str).val();
-		var item_categorie = $('#item_categorie-'+str).val();
-		var image = $('#image-'+str).val();
 		$.ajax({
-			type: "POST",
-			url: "products/action.php?p=edit",
-			data: "item_name="+item_name+"&item_ingridients="+item_ingridients+"&item_price="+item_price+"&item_categorie="+item_categorie+"&image="+image+"&id="+id,
-			success:function(data){
+			type: "GET",
+			url: "products/action.php?p=delete",
+			data: "id="+id,
+			success: function(data){
 				viewData();
 			}
-		});
-	}
+		})
+	}	
 </script>
 

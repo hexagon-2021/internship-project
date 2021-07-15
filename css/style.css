@@ -699,3 +699,6 @@ div.dashboard button#add_product_toggler:hover {
     font-size: 1.3rem;
   }
 }
+.transparent_file {
+  opacity: 0;
+}
