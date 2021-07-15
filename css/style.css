@@ -481,7 +481,6 @@ div.dashboard
   text-align: center;
   color: var(--secondary-color);
   font-family: "Dela Gothic One", cursive;
-  letter-spacing: 3px;
   font-size: 2em;
 }
 
@@ -620,10 +619,73 @@ div.dashboard button#add_product_toggler:hover {
   color: var(--first-color);
 }
 
+
+div.dashboard .menu div#menu_actions button.active_action {
+  background: var(--third-color) !important;
+  color: var(--first-color) !important;
+}
 /* Admin Dashboard */
 
 div.dashboard#admin_dashboard .menu {
-  padding-top: 10%;
+  padding-top: 5%;
+  max-height: 100%;
+}
+
+div.dashboard#admin_dashboard .menu h1.menu_title {
+  color: var(--secondary-color);
+  font-weight: bolder;
+}
+
+div.dashboard#admin_dashboard .menu div#menu_actions {
+  padding-top: 15%;
+}
+
+#pending_businesses div.display_businesses {
+  overflow-x: auto;
+}
+
+#pending_businesses div.display_businesses table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#pending_businesses div.display_businesses table th {
+  min-width: 110px;
+  max-width: 200px;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.1rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+  padding: 8px;
+}
+
+#pending_businesses div.display_businesses table tr:nth-child(odd) {
+  background-color: var(--third-color);
+}
+
+#pending_businesses div.display_businesses table tr:nth-child(even) {
+  background-color: var(--first-color);
+}
+
+#pending_businesses div.display_businesses table th button.pending_business_action {
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+#pending_businesses div.display_businesses table th button#deny_business {
+  background: red;
+  color: white;
+}
+
+#pending_businesses div.display_businesses table th button#approve_business {
+  background: green;
+  color: white;
 }
 
 /* Responsive */
@@ -699,6 +761,9 @@ div.dashboard#admin_dashboard .menu {
   }
 }
 @media (min-width: 1366px) {
+  #pending_businesses div.display_businesses table {
+    width: 95%;
+  }
   nav#navbar ul.navbar_ul_items {
     left: 6rem;
   }
@@ -774,7 +839,6 @@ div.dashboard#admin_dashboard .menu {
     border-radius: 50%;
     border: 2px solid var(--first-color);
   }
-
   #about_us_section > div.container {
     width: 40%;
   }
@@ -803,5 +867,8 @@ div.dashboard#admin_dashboard .menu {
   div.dashboard #products #add-form button {
     width: 40%;
     font-size: 1.3rem;
+  }
+  #pending_businesses div.display_businesses table {
+    width: 85%;
   }
 }
