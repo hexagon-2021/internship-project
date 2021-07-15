@@ -1,5 +1,6 @@
 <?php require_once('../includes/dbh.inc.php'); ?>
 <?php require_once('../includes/functions.inc.php'); ?>
+<?php if (isset($_SESSION['admin'])) {header("Location: ../admin/index.php");} ?>
 <?php if (isset($_SESSION['userid'])) { ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,19 +10,24 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dashboard</title>
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>
 </head>
 <body onload="viewData()">
   <?php 
     $active = "Dashboard";
     include '../includes/nav.inc.php'; 
   ?>
+  
+  <?php 
+    $query = mysqli_query($conn, "SELECT * FROM business WHERE id=" . $_SESSION['userid']. " AND aproved=1");
+    if (mysqli_num_rows($query) > 0) { 
+  ?>
   <div class="dashboard">
     <div class="menu">
       <?php 
         $dashboard_categories = ["Produktet", "Edito Profilin"];
         $dashboard_categories_files_name = ["products", "profile_edit"];
+        $i_class = ["fab fa-product-hunt", "fas fa-user-edit"];
       ?>
       <img src="../includes/images/profile_pictures/mcd.jpg" alt="company_picture" width="200px" />
       <h3 class="company_info_component" id="company_info_name">
@@ -44,8 +50,11 @@
       </div> #wrapper -->
       
       <div id="menu_actions">
-        <button value="products" class="menu_actions_btn" id="menu_actions_btn_products"><i class="fab fa-product-hunt"></i> Produktet</button>
-        <button value="profile_edit" class="menu_actions_btn" id="menu_actions_btn_profile_edit"><i class="fas fa-user-edit"></i> Profili</button>
+        <?php 
+          foreach ($dashboard_categories as $i=>$dashboard_categorie) {
+            echo "<button value='". $dashboard_categories_files_name[$i] ."' class='menu_actions_btn'><i class='".$i_class[$i]."'></i> $dashboard_categorie</button>";
+          }
+        ?>
       </div> <!-- #menu_actions -->
     </div> <!-- menu -->
     <div class="main">
@@ -62,28 +71,36 @@
       </div> <!-- content -->
     </div> <!-- main -->
   </div> <!-- .dashboard -->
-<script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>
+  
+  <?php } else {?>
+    <h1 style='padding-top: 20%;color: var(--secondary-color);text-align: center;font-size: 30px;'>Llogaria juaj nuk eshte verifikuar ende!</h1>
+  <?php } ?>
+
+
  <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <script src="../js/dashboard.js"></script>
   <script src="../js/main.js"></script>
+  
   <script>
     $(document).ready(function() {
+      $("button.menu_actions_btn[value='products']").addClass("active_action");
       $(".main > .content").load("products/main.php");
+      viewData();
     });
   </script>
-<script>
-  function viewData(){
-    
-		$.ajax({
-			url: "products/action.php",
-			success: function(data){
-				$('#display_products').html(data);
-				//$("#add-form")[0].reset();
-        
-			} 
-		});
-	}
-</script>
+  <script>
+    function viewData(){
+      $.ajax({
+        url: "products/action.php",
+        success: function(data){
+          $('#display_products').html(data);
+          $("#add-form")[0].reset();
+        } 
+      });
+    }
+  </script>
 </body>
 </html>
 <?php } else {

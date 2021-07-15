@@ -149,8 +149,7 @@
                 }  ?>
             </table> <?php                      
         }else{
-            $_SESSION["errorMessage"] = " There is no product ";
-            //header("location: ../index.php");
+            echo "<table></table>";
         }
     }
 ?>

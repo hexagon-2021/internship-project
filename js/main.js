@@ -1,8 +1,17 @@
+function resize_navbar_li() {
+  let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
+  if (!$("i.bar_icon").is(":visible")) {
+    $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
+  }
+}
+
 $(window).on("resize", function() {
   if ($(window).width() >= 1024) {
     $("#navbar > .container > ul").show(300);
+    resize_navbar_li();
   } else {
     $("#navbar > .container > ul").hide(300);
+    $("nav#navbar ul.navbar_ul_items li").css("width", 100);
   }
 });
 
@@ -24,6 +33,7 @@ $(document).on('click', "#add_product_toggler", function() {
 
 $(document).ready(function() {
   let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
-  console.log(width);
-  $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
+  if (!$("i.bar_icon").is(":visible")) {
+    $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
+  }
 })

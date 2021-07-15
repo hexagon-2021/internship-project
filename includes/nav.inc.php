@@ -11,17 +11,30 @@
       <?php 
         $list = $links = $i_class = [];
         if (isset($_SESSION['userid'])) {
-          if ($active != "Dashboard") {
-            array_push($list,"Kontakto");
-            array_push($links, "/internship-project/contact");
+          if ($active != "Dashboard" && $active != "Admin") {
+            array_push($list, "Kontakto");
+            array_push($links, "/internship-project/contact.php");
             array_push($i_class, "address-book");
           }
-          array_push($list, "Rreth Nesh", "Dashboard", "Log Out");
-          array_push($links, "/internship-project/about", "/internship-project/dashboard", "/internship-project/includes/logout.inc.php");
-          array_push($i_class, "users", "chart-line", "sign-in-alt");
+          array_push($list, "Rreth Nesh");
+          array_push($links, "/internship-project/about.php");
+          array_push($i_class, "users");
+          
+          if (isset($_SESSION['admin'])) {
+            array_push($list,"Admin");
+            array_push($links, "/internship-project/admin");
+            array_push($i_class, "users-cog");
+          } else {
+            array_push($list, "Dashboard");
+            array_push($links, "/internship-project/dashboard");
+            array_push($i_class, "chart-line");
+          }
+          array_push($list, "Log Out");
+          array_push($links, "/internship-project/includes/logout.inc.php");
+          array_push($i_class, "sign-in-alt");
         } else {
           array_push($list, "Rreth Nesh", "Kontakto", "Log In");
-          array_push($links, "/internship-project/about", "/internship-project/contact", "/internship-project/login.php");
+          array_push($links, "/internship-project/about.php", "/internship-project/contact.php", "/internship-project/login.php");
           array_push($i_class, "users", "address-book", "sign-in-alt");
         }
         foreach ($list as $i=>$categorie) {

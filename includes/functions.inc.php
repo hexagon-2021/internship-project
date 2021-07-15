@@ -150,3 +150,31 @@ function confirmLogin(){
 		header("location: ../login.php");
 	}
 }
+
+function emptyContacInput($name, $email, $message){
+	$result;
+	if(empty($name) || empty($email) || empty($message)) {
+		$result = true;
+	}
+	else{
+		$result = false;
+	}
+	return $result;
+}
+
+function createMessage($conn, $name, $email, $message){
+	$sql = "INSERT INTO contact_us (name , email , message) VALUES (?, ?, ?);";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		header("location: ../contact.php?error=stmtfailed");
+		exit();
+	}
+
+	
+
+	mysqli_stmt_bind_param($stmt, "sss", $name, $email , $message);
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
+	header("location: ../contact.php?error=none");
+		exit();
+}
