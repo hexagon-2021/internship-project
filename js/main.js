@@ -1,6 +1,5 @@
 function resize_navbar_li() {
   let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
-  // $("i.bar_icon").hide()
   if (!$("i.bar_icon").is(":visible")) {
     $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
   }
@@ -34,7 +33,6 @@ $(document).on('click', "#add_product_toggler", function() {
 
 $(document).ready(function() {
   let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
-  // $("i.bar_icon").hide()
   if (!$("i.bar_icon").is(":visible")) {
     $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
   }
