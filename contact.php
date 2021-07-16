@@ -28,25 +28,26 @@
 			font-size: 25px;
 		}
 		.inputC {
-  			margin-top: 10px;
-  			padding-top: 10px;
- 			padding-bottom: 15px;
-  			border: none;
-  			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
-  			color: #eba83a;
+			margin-top: 10px;
+			padding-top: 10px;
+			padding-bottom: 15px;
+			padding-left: 25px;
+			border-radius: 0.7rem;
+			border: 1px solid var(--secondary-color);
+			color: #eba83a;
  			font-size: 15px;
-  			font-weight: bold;
-  			/*padding-left: 15%;*/
-  			padding-right: 15%;
-
+			font-weight: bold;
+			/*padding-left: 15%;*/
+			padding-right: 15%;
 		}
 		.contactButton {
   			margin-top: 20px;
   			padding-top: 20px;
   			padding-bottom: 20px;
   			background-color: #eba83a;
-  			border: none;
-  			box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
+				border-radius: 0.7rem;
+  			border: 1px solid var(--secondary-color);
+  			/* box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2); */
   			color: white;
   			/*font-family: Arial, Helvetica, sans-serif;*/
   			font-size: 20px;
