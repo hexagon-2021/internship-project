@@ -1,9 +1,3 @@
-<?php 
-	$active = "Kontakto";
-	include 'includes/nav.inc.php';
-	require_once('includes/session.php');
-	require_once('includes/functions.inc.php');
-?> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -76,10 +70,13 @@
 	</style>
 </head>
 <body>
+	<?php $active = "Kontakto"; include 'includes/session.php'; include 'includes/nav.inc.php'; ?>
 	<div style="clear: both;">
 		<form method="POST" action="includes/contact.inc.php">
 			<h1 class="contactUs">Contact Us</h1>
-			<h1 class="contactUsTxt">Got a question ? We'd love to here from you . Send us a message<br> and we'll respond as soon as possible. </h1>
+			<h1 class="contactUsTxt">
+				Keni ndonje pyetje? Do te ishte nje kenaqsi per ne qe te degjonim nga ju. <br /> Na dergoni nje mesazh dhe ne do t'ju kthehemi sa me shpejt! 
+			</h1>
 
 			<div class="contactField">
 				<h1>Name</h1>
@@ -88,7 +85,7 @@
 				<input type="text" name="email" placeholder="Email" class="inputC">
 				<h1>Message</h1>
 				<input type="text" name="message" placeholder="Message" class="inputC"><br>
-				<button type="submit" name="submit" class="contactButton pointer">Send Message</button>
+				<button type="submit" name="submit" class="contactButton pointer">Dergo Mesazh</button>
 			</div>
 		</form>
 	</div>
