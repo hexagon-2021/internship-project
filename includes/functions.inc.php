@@ -89,8 +89,8 @@ function companyNameExists($conn, $companyName){
 	}
 	mysqli_stmt_close($stmt);
 }
-function createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number){
-	$sql = "INSERT INTO business (  username, password ,email,company_name, company_city, phone_number, name) VALUES (?, ?, ?, ?, ?, ?, ?);";
+function createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number, $document_name){
+	$sql = "INSERT INTO business (  username, password ,email,company_name, company_city, phone_number, name, document_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		header("location: ../signupForm.php?error=stmtfailed");
@@ -99,13 +99,46 @@ function createUser($conn, $name, $email, $username, $pwd, $companyName, $compan
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
 
-	mysqli_stmt_bind_param($stmt, "sssssss", $username,$hashedPwd,$email, $companyName,    $companyCity, $phone_number,$name);
+	mysqli_stmt_bind_param($stmt, "ssssssss", $username,$hashedPwd,$email, $companyName,    $companyCity, $phone_number,$name, $document_name);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../signupForm.php?error=none");
 		exit();
 }
 
+function check_upload_image($file) {
+	$file_name = $_FILES['document']['name'];
+	$file_tmp_name = $_FILES['document']['tmp_name'];
+	$file_size = $_FILES['document']['size'];
+	$file_error = $_FILES['document']['error'];
+	$file_type = $_FILES['document']['type'];
+
+	$file_ext = explode(".", $file_name);
+	$file_actual_ext = strtolower(end($file_ext));
+
+	$allowed = array('jpg', 'jpeg', 'png', 'doc', 'docx', 'pdf');
+
+	if (in_array($file_actual_ext, $allowed)) {
+		if ($file_error === 0) {
+			if ($file_size < 5000000) {
+				$file_name_new = uniqid('', true).".".$file_actual_ext;
+				$file_destination = 'proofs/'.$file_name_new;
+				move_uploaded_file($file_tmp_name, $file_destination);
+			} else {
+				header("Location: ../signupForm.php?docfs");
+				exit();
+			}
+		} else {
+			header("Location: ../signupForm.php?docerr");
+			exit();
+		}
+	} else {
+		header("Location: ../signupForm.php?docft");
+		exit();
+	}
+
+	return $file_name_new;
+}
 
 
 function emptyInputLogin($username, $pwd){
