@@ -7,7 +7,7 @@
 </head>
 <body>
 <?php $active="Sign Up"; include 'includes/nav.inc.php' ?>	
-	<form action="includes/signup.inc.php" method="post">
+	<form enctype="multipart/form-data" action="includes/signup.inc.php" method="post">
 		<div class="signup-items">
 			<h1 class="signup">Sign Up</h1>
 			<input type="text" name="name" placeholder="Full name..." class="input">
@@ -18,34 +18,45 @@
 			<input type="text" name="companyName" placeholder="Company name..." class="input">
 			<input type="text" name="companyCity" placeholder="Company city..." class="input">
 			<input type="text" name="phone_number" placeholder="Phone number..." class="input">
+			<input type="file" name="document" placeholder="Dokumenti per vertetim te biznesit" class="input">
+			<span style="color: red;font-size: 20px;">Ju lutem te bashkangjitni nje file te formatit PDF, DOCX ose nje foto e cila verteton pronesine e biznesit tuaj!</span>
 			<button type="submit" name="submit" class="pointer signinSignupButton">Sign up</button>
 			<?php
-						if (isset($_GET["error"])) {
-							if ($_GET["error"] == "emptyinput") {
-								echo "<p>Fill in all fields!</p>";
-							}
-							else if ($_GET["error"] == "invalidemail") {
-								echo "<p>Choose a proper email!</p>";
-							}
-							else if ($_GET["error"] == "invaliduid") {
-								echo "<p>Choose a proper username!</p>";
-							}
-							else if ($_GET["error"] == "passwordsdontmatch") {
-								echo "<p>Password doesn't match!</p>";
-							}
-							else if ($_GET["error"] == "usernametaken") {
-								echo "<p>Username already taken!</p>";
-							}
-							else if ($_GET["error"] == "stmtfailed") {
-								echo "<p>Some thing went wrong, try again!</p>";
-							}
-							else if ($_GET["error"] == "none") {
-								echo "<p>You have signed up!</p>";
-							}
-							else if ($_GET["error"] == "companyNameExists") {
-								echo "<p>Company name already taken!</p>";
-							}
-						}
+				if (isset($_GET["error"])) {
+					if ($_GET["error"] == "emptyinput") {
+						echo "<p>Fill in all fields!</p>";
+					}
+					else if ($_GET["error"] == "invalidemail") {
+						echo "<p>Choose a proper email!</p>";
+					}
+					else if ($_GET["error"] == "invaliduid") {
+						echo "<p>Choose a proper username!</p>";
+					}
+					else if ($_GET["error"] == "passwordsdontmatch") {
+						echo "<p>Password doesn't match!</p>";
+					}
+					else if ($_GET["error"] == "usernametaken") {
+						echo "<p>Username already taken!</p>";
+					}
+					else if ($_GET["error"] == "stmtfailed") {
+						echo "<p>Some thing went wrong, try again!</p>";
+					}
+					else if ($_GET["error"] == "none") {
+						echo "<p>You have signed up!</p>";
+					}
+					else if ($_GET["error"] == "companyNameExists") {
+						echo "<p>Company name already taken!</p>";
+					} 
+					else if ($_GET['error'] == "docfs") {
+						echo "<p>Madhesia e file-it eshte shume e madhe!</p>";
+					}
+					else if ($_GET['error'] == "docerr") {
+						echo "<p>Kishte nje error gjate dergimit te file-it</p>";
+					}
+					else if ($_GET['error'] == "docft") {
+						echo "<p>Ky lloj i file-it nuk eshte i suportuar!</p>";
+					}
+				}
 			?>
 		</div>
 	</form>
