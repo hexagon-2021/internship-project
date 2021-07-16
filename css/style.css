@@ -692,6 +692,49 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   color: white;
 }
 
+/* approved businesses */
+
+#approved_businesses div.display_approved_businesses {
+  overflow-x: auto;
+}
+
+#approved_businesses div.display_approved_businesses table {
+  width: 100%;
+  margin: 0 auto;
+}
+
+#approved_businesses div.display_approved_businesses table th {
+  min-width: 110px;
+  max-width: 200px;
+  text-align: center;
+  font-size: 1rem;
+  border: 1px solid var(--secondary-color);
+  border-radius: 0.1rem;
+  color: var(--secondary-color);
+  font-weight: bold;
+  padding: 8px;
+}
+
+#approved_businesses div.display_approved_businesses table tr:nth-child(odd) {
+  background-color: var(--third-color);
+}
+
+#approved_businesses div.display_approved_businesses table tr:nth-child(even) {
+  background-color: var(--first-color);
+}
+#approved_businesses div.display_approved_businesses table th button.delete_business_action {
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+#approved_businesses div.display_approved_businesses table th button#delete_business {
+  background: red;
+  color: white;
+}
+
 /* Responsive */
 @media (min-width: 1024px) {
   nav#navbar .container {
