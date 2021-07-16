@@ -876,3 +876,51 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
     width: 85%;
   }
 }
+.changePasswordTxt{
+  color: var(--secondary-color);
+  /*font-weight: bold;*/
+  font-family: "Dela Gothic One", cursive;
+  font-size: 30px;
+
+}
+.labelTxtChangePassword{
+  font-family: "Dela Gothic One", cursive;
+  font-size: 20px;
+  color: var(--first-color);
+  margin-top: 10px;
+  margin: 0 auto ;
+}
+.inputChangePassword{
+  padding-top:1%;
+  padding-bottom:1%;
+  padding-left: 5%;
+  padding-right: 5%;
+  margin-top: 10px;
+  border:none;
+  
+}
+.changeBtn{
+  padding-top:1%;
+  padding-bottom:1%;
+  padding-left: 9%;
+  padding-right: 9%;
+  margin-top: 10px;
+  background-color: var(--first-color);
+  border:none;
+  color: white;
+  
+}
+.changeBtn:hover{
+  background-color: var(--secondary-color);
+}
+.errorMessageChangePassword{
+  color: var(--secondary-color);
+  /*font-weight: bold;*/
+  font-family: "Dela Gothic One", cursive;
+  font-size: 20px;
+  
+}
+.formChange{
+  width: 100%;
+  text-align: center;
+}
