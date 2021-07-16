@@ -12,6 +12,7 @@
       <th>Emri i Kompanise</th>
       <th>Qyteti</th>
       <th>Nr. Telefonit</th>
+      <th>Dokumenti</th>
       <th>Aprovo</th>
       <th>Moho</th>
     </tr>
@@ -23,6 +24,7 @@
             echo "<th>". $row['company_name'] ."</th>";
             echo "<th>". $row['company_city'] ."</th>";
             echo "<th>". $row['phone_number'] ."</th>";
+            echo "<th><a href='../includes/proofs/".$row["document_name"]."' target='_blank'>Shiqo</a></th>";
             echo "<th><button class='pending_business_action' value='".$row['id']."' id='approve_business'><i class='fas fa-check-circle'></i></button></th>";
             echo "<th><button class='pending_business_action' value='".$row['id']."' id='deny_business'><i class='fas fa-times-circle'></i></button></th>";
           echo "</tr>";
