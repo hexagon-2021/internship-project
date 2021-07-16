@@ -1,6 +1,9 @@
 <?php
 
 if (isset($_POST["submit"])) {
+
+	require_once 'dbh.inc.php';
+	require_once 'functions.inc.php';
 	
 	$name = $_POST["name"];
 	$email = $_POST["email"];
@@ -10,9 +13,8 @@ if (isset($_POST["submit"])) {
 	$companyName = $_POST["companyName"];
 	$companyCity = $_POST["companyCity"];
 	$phone_number = $_POST["phone_number"];
-
-	require_once 'dbh.inc.php';
-	require_once 'functions.inc.php';
+	
+	$file = $_FILES['document'];
 
 	if (emptyInputSignup($name, $email, $pwd, $pwdRepeat, $companyName, $companyCity, $phone_number, $username) !== false) {
 		header("location: ../signupForm.php?error=emptyinput");
@@ -39,7 +41,9 @@ if (isset($_POST["submit"])) {
 		exit();
 	}
 
-	createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number);
+	$document_name = check_upload_image($file);
+
+	createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number, $document_name);
 }
 else{
 	header("location: ../signupForm.php");
