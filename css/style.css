@@ -80,8 +80,9 @@ body {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 25px;
-  border: none;
-  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
+  padding-left: 20px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 0.7rem;
   color: var(--first-color);
   font-size: 15px;
   font-weight: bold;
@@ -94,15 +95,17 @@ body {
   margin: 0 auto;
   border: solid var(--first-color) 1px;
   padding: 80px;
-  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
+  border-radius: 0.7rem;
+  /* box-shadow: 12px 12px 10px 1px rgba(20, 20, 26, 0.2); */
   background-color: var(--fourth-color);
 }
 .input {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 25px;
-  border: none;
-  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
+  padding-left: 20px;
+  border-radius: 0.7rem;
+  border: 1px solid var(--secondary-color);
   color: var(--first-color);
   font-size: 15px;
   font-weight: bold;
@@ -113,7 +116,8 @@ body {
   padding-bottom: 20px;
   background-color: var(--first-color);
   border: none;
-  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
+  border-radius: 0.7rem;
+  /* box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2); */
   color: white;
   /*font-family: Arial, Helvetica, sans-serif;*/
   font-size: 20px;
