@@ -80,9 +80,8 @@ body {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 25px;
-  padding-left: 20px;
-  border: 2px solid var(--secondary-color);
-  border-radius: 0.7rem;
+  border: none;
+  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   color: var(--first-color);
   font-size: 15px;
   font-weight: bold;
@@ -95,17 +94,15 @@ body {
   margin: 0 auto;
   border: solid var(--first-color) 1px;
   padding: 80px;
-  border-radius: 0.7rem;
-  /* box-shadow: 12px 12px 10px 1px rgba(20, 20, 26, 0.2); */
+  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   background-color: var(--fourth-color);
 }
 .input {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 25px;
-  padding-left: 20px;
-  border-radius: 0.7rem;
-  border: 1px solid var(--secondary-color);
+  border: none;
+  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   color: var(--first-color);
   font-size: 15px;
   font-weight: bold;
@@ -689,49 +686,6 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
 
 #pending_businesses div.display_businesses table th button#approve_business {
   background: green;
-  color: white;
-}
-
-/* approved businesses */
-
-#approved_businesses div.display_approved_businesses {
-  overflow-x: auto;
-}
-
-#approved_businesses div.display_approved_businesses table {
-  width: 100%;
-  margin: 0 auto;
-}
-
-#approved_businesses div.display_approved_businesses table th {
-  min-width: 110px;
-  max-width: 200px;
-  text-align: center;
-  font-size: 1rem;
-  border: 1px solid var(--secondary-color);
-  border-radius: 0.1rem;
-  color: var(--secondary-color);
-  font-weight: bold;
-  padding: 8px;
-}
-
-#approved_businesses div.display_approved_businesses table tr:nth-child(odd) {
-  background-color: var(--third-color);
-}
-
-#approved_businesses div.display_approved_businesses table tr:nth-child(even) {
-  background-color: var(--first-color);
-}
-#approved_businesses div.display_approved_businesses table th button.delete_business_action {
-  font-size: 1.3rem;
-  padding: 10px 15px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  border-radius: 0.3rem;
-}
-#approved_businesses div.display_approved_businesses table th button#delete_business {
-  background: red;
   color: white;
 }
 

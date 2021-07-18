@@ -11,13 +11,14 @@
       <?php 
         $list = $links = $i_class = [];
         if (isset($_SESSION['userid'])) {
+          if ($active != "Dashboard" && $active != "Admin") {
+            array_push($list, "Kontakto");
+            array_push($links, "/internship-project/contact.php");
+            array_push($i_class, "address-book");
+          }
           array_push($list, "Rreth Nesh");
           array_push($links, "/internship-project/about.php");
           array_push($i_class, "users");
-          
-          array_push($list, "Kontakto");
-          array_push($links, "/internship-project/contact.php");
-          array_push($i_class, "address-book");
           
           if (isset($_SESSION['admin'])) {
             array_push($list,"Admin");
