@@ -3,9 +3,10 @@ START TRANSACTION;
 SET time_zone = "+00:00";
 
 CREATE TABLE `business` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `username` varchar(256) NOT NULL,
   `password` varchar(256) NOT NULL,
+  `name` varchar(256) NOT NULL,
   `email` varchar(256) NOT NULL,
   `company_name` varchar(256) NOT NULL,
   `company_city` varchar(256) NOT NULL,
@@ -15,7 +16,7 @@ CREATE TABLE `business` (
 
 
 CREATE TABLE `product` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
   `business_id` int(11) NOT NULL,
   `item_offer` tinyint(1) NOT NULL,
   `item_name` varchar(256) NOT NULL,
@@ -28,21 +29,25 @@ CREATE TABLE `product` (
   `date_added` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-ALTER TABLE `business`
-  ADD PRIMARY KEY (`id`);
+CREATE TABLE `contact_us` (
+  `name` text NOT NULL,
+  `email` text NOT NULL,
+  `message` text NOT NULL
+);
+
+CREATE TABLE ratings (
+  `id` int(11) NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  `userid` int(11) NOT NULL,
+  `rating` int(11) NOT NULL,
+  `date_added` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
   ADD KEY `business_id` (`business_id`);
-
-ALTER TABLE `business`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
-
-ALTER TABLE `product`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 ALTER TABLE `product`
   ADD CONSTRAINT `product_ibfk_1` FOREIGN KEY (`business_id`) REFERENCES `business` (`id`);
-  
-ALTER TABLE `business` ADD `full_name` VARCHAR(256) NOT NULL AFTER `password`;
 
+ALTER TABLE `business` ADD `aproved` TINYINT(1) NOT NULL AFTER `phone_number`;
+
+ALTER TABLE `business` ADD `document_name` VARCHAR(256) NOT NULL AFTER `phone_number`;

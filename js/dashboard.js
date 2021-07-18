@@ -8,6 +8,8 @@ $("div.dashboard > div.main > h2 > select").change(function() {
 
 $("div.dashboard button.menu_actions_btn").click(function() {
   let selected = $(this)[0].value;
+  $("div.dashboard button.menu_actions_btn").removeClass("active_action");
+  $(this).addClass("active_action");
   $(".main > .content").load(`${selected}/main.php`);
   if (selected == "products") {
     viewData();
