@@ -20,7 +20,7 @@
         </p>
         <?php ?>
       </div> <!-- content -->
-      <h1 class="title">Vlerwsimet</h1>
+      <h1 class="title">Vlerësimet</h1>
       <div id="ratings">
         <?php 
           $ratingsSql = "SELECT * FROM ratings; ";
