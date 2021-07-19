@@ -40,9 +40,23 @@ if (isset($_POST["submit"])) {
 		header("location: ../signupForm.php?error=companyNameExists");
 		exit();
 	}
+	
+	if( 
+        ctype_alnum($pwd) // numbers & digits only 
+        && strlen($pwd)>6 // at least 7 chars 
+        && strlen($pwd)<21 // at most 20 chars 
+        && preg_match('`[A-Z]`',$pwd) // at least one upper case 
+        && preg_match('`[a-z]`',$pwd) // at least one lower case 
+        && preg_match('`[0-9]`',$pwd) // at least one digit 
+        ) {
+		
+			// echo "bravo";
+	}else{
+		header("location: ../signupForm.php?error=FjalkalimiDuhetTiKetSëPaku8Karaktere");
+		exit();
+	}
 
 	$document_name = check_upload_image($file);
-
 	createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number, $document_name);
 }
 else{
