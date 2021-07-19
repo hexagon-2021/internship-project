@@ -8,7 +8,6 @@ $(window).on("resize", function() {
     resize_navbar_li((100 / $("nav#navbar ul.navbar_ul_items li").length) - 5);
   } else {
     $("#navbar > .container > ul").hide(300);
-    $("nav#navbar ul.navbar_ul_items li").css("width", 100);
     resize_navbar_li(95);
   }
 });
@@ -30,5 +29,11 @@ $(document).on('click', "#add_product_toggler", function() {
 });
 
 $(document).ready(function() {
-  resize_navbar_li((100 / $("nav#navbar ul.navbar_ul_items li").length) - 5);
+  if ($(window).width() >= 1024) {
+    $("#navbar > .container > ul").show(300);
+    resize_navbar_li((100 / $("nav#navbar ul.navbar_ul_items li").length) - 5);
+  } else {
+    $("#navbar > .container > ul").hide(300);
+    resize_navbar_li(95);
+  }
 })
