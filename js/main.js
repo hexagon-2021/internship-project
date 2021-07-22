@@ -37,3 +37,26 @@ $(document).ready(function() {
     resize_navbar_li(95);
   }
 })
+var edit_profile_toggler_text = 0;
+$(document).on('click', "#edit_profile_toggler", function() {
+  $("div.dashboard #products #editProfile-div").toggle(400);
+  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").toggle(400);
+  if (edit_profile_toggler_text % 2 == 0) {
+    $(this).html("Largo Formen");
+  } else {
+    $(this).html("Ndrysho Profilin");
+  }
+  edit_profile_toggler_text +=1;
+});
+
+var edit_password_toggler_text = 0;
+$(document).on('click', "#edit_password_toggler", function() {
+  $("div.dashboard #products #formChange-div").toggle(400);
+  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").toggle(400);
+  if (edit_password_toggler_text % 2 == 0) {
+    $(this).html("Largo Formen");
+  } else {
+    $(this).html("Ndrysho Passwordin");
+  }
+  edit_password_toggler_text +=1;
+});

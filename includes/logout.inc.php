@@ -1,8 +1,10 @@
+<?php require_once("functions.inc.php") ?>
+<?php require_once("session.php") ?>
 <?php
-
-session_start();
-session_unset();
+$_SESSION["userid"] = null;
+$_SESSION["username"] = null;
 session_destroy();
 
 header("location: ../login.php");
 exit();
+?>
