@@ -56,6 +56,9 @@
 					else if ($_GET['error'] == "docft") {
 						echo "<p>Ky lloj i file-it nuk eshte i suportuar!</p>";
 					}
+					else if ($_GET['error'] == "FjalkalimiDuhetTiKetSëPaku8Karaktere") {
+						echo "<p>Fjalkalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
+					}
 				}
 			?>
 		</div>

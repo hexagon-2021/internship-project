@@ -1,17 +1,14 @@
-function resize_navbar_li() {
-  let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
-  if (!$("i.bar_icon").is(":visible")) {
-    $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
-  }
+function resize_navbar_li(width) {
+  $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`);
 }
 
 $(window).on("resize", function() {
   if ($(window).width() >= 1024) {
     $("#navbar > .container > ul").show(300);
-    resize_navbar_li();
+    resize_navbar_li((100 / $("nav#navbar ul.navbar_ul_items li").length) - 5);
   } else {
     $("#navbar > .container > ul").hide(300);
-    $("nav#navbar ul.navbar_ul_items li").css("width", 100);
+    resize_navbar_li(95);
   }
 });
 
@@ -32,9 +29,12 @@ $(document).on('click', "#add_product_toggler", function() {
 });
 
 $(document).ready(function() {
-  let width = (100 / $("nav#navbar ul.navbar_ul_items li").length) - 5;
-  if (!$("i.bar_icon").is(":visible")) {
-    $("nav#navbar ul.navbar_ul_items li").css("width", `${width}%`)
+  if ($(window).width() >= 1024) {
+    $("#navbar > .container > ul").show(300);
+    resize_navbar_li((100 / $("nav#navbar ul.navbar_ul_items li").length) - 5);
+  } else {
+    $("#navbar > .container > ul").hide(300);
+    resize_navbar_li(95);
   }
 })
 var edit_profile_toggler_text = 0;

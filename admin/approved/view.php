@@ -1,11 +1,22 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
-
-<table class="approved_businesses_table">
+<div class="filters">
+    <span class="spanFiltro">Filtro në bazë të &nbsp;</span>
+    <select name="fetchval" id="fetchval">
+      <option value="" disabled="" selected="">Select Filter</option>
+      <option value="Vushtrria">Vushtrria</option>
+      <option value="Mitrovica">Mitrovica</option>
+      <option value="Peja">Peja</option>
+      <option value="Prishtina">Prishtina</option>
+    </select>
+  </div>
+  <table class="approved_businesses_table">
   <?php 
     $sql = "SELECT * FROM business WHERE aproved=1 AND username != 'admin'; ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
   ?>
+  
+  
     <tr>
       <th>Emri & Mbiemri</th>
       <th>E-mail</th>
@@ -14,6 +25,8 @@
       <th>Nr. Telefonit</th>
       <th>Fshij</th>
     </tr>
+
+
     <?php 
         while ($row = mysqli_fetch_assoc($result)) {
           echo "<tr>";
@@ -54,5 +67,19 @@
     }
   })
   
-  
+  $(document).ready(function(){
+    $("#fetchval").on('change' , function(){
+      var value = $(this).val();
+      // alert(value);
+
+      $.ajax({
+        url:'approved/action.php',
+        type:'POST',
+        data: 'request=' + value,
+        success:function(data){
+          $(".approved_businesses_table").html(data);
+        }
+      });
+    });
+  });
 </script>

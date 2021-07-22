@@ -50,6 +50,4 @@ ALTER TABLE `product`
 
 ALTER TABLE `business` ADD `aproved` TINYINT(1) NOT NULL AFTER `phone_number`;
 
-ALTER TABLE `business` ADD `aproved` TINYINT(1) NOT NULL AFTER `phone_number`;
-
 ALTER TABLE `business` ADD `document_name` VARCHAR(256) NOT NULL AFTER `phone_number`;
