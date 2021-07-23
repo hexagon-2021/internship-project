@@ -708,6 +708,16 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   color: white;
 }
 
+#approved_businesses div.display_approved_businesses table th select {
+  width: 90%;
+  font-size: 1rem;
+  padding: 5px 7px;
+  background: var(--secondary-color);
+  color: var(--first-color);
+  font-weight: bold;
+  border: none;
+}
+
 /* approved businesses */
 
 #approved_businesses div.display_approved_businesses {
