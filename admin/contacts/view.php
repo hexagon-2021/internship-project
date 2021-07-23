@@ -25,28 +25,3 @@
   } ?>
 </table>
 
-<!--<script>
-  
-    $(".delete_business_action").on('click', function(e) {
-      
-      if(confirm("A jeni i sigurt?")){
-    //e.preventDefault();
-    let id = this.value;
-    
-    $.ajax({
-      url: "approved/action.php",
-      type: "POST",
-      data: {
-        id: id,
-      },
-      success: function(data) {
-  
-        $(".display_approved_businesses").load("approved/view.php");
-
-      }
-    }) 
-    }
-  })
-  
-  
-</script> -->
