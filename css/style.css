@@ -986,3 +986,13 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   width: 100%;
   text-align: center;
 }
+.delete_product_action{
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: red;
+  color: white;
+}
