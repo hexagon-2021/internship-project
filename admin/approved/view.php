@@ -23,21 +23,33 @@
       <th>Emri i Kompanise</th>
       <th>Qyteti</th>
       <th>Nr. Telefonit</th>
+      <th>Statusi</th>
       <th>Fshij</th>
     </tr>
 
 
     <?php 
-        while ($row = mysqli_fetch_assoc($result)) {
-          echo "<tr>";
-            echo "<th>". $row['name'] ."</th>";
-            echo "<th>". $row['email'] ."</th>";
-            echo "<th>". $row['company_name'] ."</th>";
-            echo "<th>". $row['company_city'] ."</th>";
-            echo "<th>". $row['phone_number'] ."</th>";
-            echo "<th><button class='delete_business_action' value='".$row['id']."' id='delete_business'><i class='fas fa-times-circle'></i></button></th>";
-          echo "</tr>";
-        }
+      $status_options = ["Active", "Inactive", "Suspended"];
+      while ($row = mysqli_fetch_assoc($result)) {
+        echo "<tr>";
+          echo "<th>". $row['name'] ."</th>";
+          echo "<th>". $row['email'] ."</th>";
+          echo "<th>". $row['company_name'] ."</th>";
+          echo "<th>". $row['company_city'] ."</th>";
+          echo "<th>". $row['phone_number'] ."</th>";
+          echo "<th>";
+            echo "<select class='change_business_status' id='change_business_status_".$row['id']."'>";
+              echo "<option>". $row['status'] ."</option>";
+              foreach ($status_options as $option) {
+                if ($option != $row['status']) {
+                  echo "<option>$option</option>";
+                }
+              }
+            echo "</select>";
+          echo "</th>";
+          echo "<th><button class='delete_business_action' value='".$row['id']."' id='delete_business'><i class='fas fa-times-circle'></i></button></th>";
+        echo "</tr>";
+      }
     ?>
   <?php } else {
     echo "<h1 style='color: var(--secondary-color);text-align: center;'>Nuk ka biznese ne pritje!</h1>";
@@ -46,26 +58,41 @@
 
 <script>
   
-    $(".delete_business_action").on('click', function(e) {
+  $(".delete_business_action").on('click', function(e) {
       
-      if(confirm("A jeni i sigurt?")){
-    //e.preventDefault();
-    let id = this.value;
+    if(confirm("A jeni i sigurt?")){
+      let id = this.value;
     
+      $.ajax({
+        url: "approved/action.php",
+        type: "POST",
+        data: {
+          id: id,
+        },
+        success: function(data) {
+    
+          $(".display_approved_businesses").load("approved/view.php");
+
+        }
+      }) 
+    }
+  })
+  
+  $(".change_business_status").change(function() {
+    let value = this.value;
+    let id = this.id.split("_").pop();
     $.ajax({
       url: "approved/action.php",
       type: "POST",
       data: {
-        id: id,
+        action_id: id,
+        action: value
       },
       success: function(data) {
-  
         $(".display_approved_businesses").load("approved/view.php");
-
       }
-    }) 
-    }
-  })
+    })
+  });
   
   $(document).ready(function(){
     $("#fetchval").on('change' , function(){
