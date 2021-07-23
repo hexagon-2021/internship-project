@@ -27,7 +27,7 @@
       <?php 
         $dashboard_categories = ["Produktet", "Edito Profilin"];
         $dashboard_categories_files_name = ["products", "profile_edit"];
-        $i_class = ["fab fa-product-hunt", "fas fa-user-edit"];
+         $i_class = ["fas fa-shopping-basket", "fas fa-user-edit"];
       ?>
       <img src="../includes/images/profile_pictures/mcd.jpg" alt="company_picture" width="200px" />
       <h3 class="company_info_component" id="company_info_name">
