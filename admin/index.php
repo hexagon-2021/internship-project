@@ -19,9 +19,9 @@
     <div class="menu">
       <h1 class='menu_title'>Super Admin</h1>
       <?php 
-        $dashboard_categories = ["Në Pritje", "Te aprovuara", "Kontaktet"];
-        $dashboard_categories_files_name = ["pending", "approved", "contacts"];
-        $i_class = ["fas fa-history", "fas fa-clipboard-check", "fas fa-envelope"];
+        $dashboard_categories = ["Në Pritje", "Te aprovuara","Produktet"];
+        $dashboard_categories_files_name = ["pending", "approved","products"];
+        $i_class = ["fas fa-history", "fas fa-clipboard-check", "fas fa-shopping-basket"];
       ?>
       
       <div id="menu_actions">
