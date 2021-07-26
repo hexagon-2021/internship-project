@@ -26,7 +26,7 @@
             echo "<th>". $row['item_ingridients'] ."</th>";
             echo "<th>". $row['item_categorie'] ."</th>";
             echo "<th>". $row['item_views'] ."</th>";
-            echo "<th><img width='50 ' src='../includes/images/profile_pictures/". $row['item_picture'] ."'></th>";
+            echo "<th><img width='50 ' src='../dashboard/products/uploads/". $row['item_picture'] ."'></th>";
             echo "<th><button class='delete_product_action' value='".$row['id']."' id='delete_products'><i class='fas fa-times-circle'></i></button></th>";
           echo "</tr>";
         }
