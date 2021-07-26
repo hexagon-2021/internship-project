@@ -31,15 +31,15 @@
             if($execute = mysqli_stmt_execute($stmt)) {
                 move_uploaded_file($_FILES["image"]["tmp_name"], $target);
                 $_SESSION["successMessage"] = "Product added successfully";
-                //header("location: ../index.php");
+                header("location: ../index.php");
                 exit();
             }else{
                 $_SESSION["errorMessage"] = "Something went wrong . Try again!";
-                //header("location: ../index.php");
+                header("location: ../index.php");
             }
             }else{
-            $_SESSION["errorMessage"] = "Error Message";
-            //header("location: ../index.php");
+              $_SESSION["errorMessage"] = "Error Message";
+              header("location: ../index.php");
             }
         }
     }else if($page == 'edit'){
