@@ -5,3 +5,6 @@
     $id = (int) $_POST['id'];
     mysqli_query($conn, "DELETE FROM product WHERE id=$id LIMIT 1");
   } 
+?>
+
+
