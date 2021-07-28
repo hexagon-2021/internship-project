@@ -1006,3 +1006,31 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   background-color: red;
   color: white;
 }
+.formChange{
+  width: 100%;
+  text-align: center;
+}
+#fetchval{
+  background-color: var(--first-color);
+  padding: 8px;
+  color: white;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.spanFiltro{
+  color:var(--secondary-color);
+  font-size: 20px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  font-family: "Dela Gothic One", cursive;
+}
+.delete_product_action{
+  font-size: 1.3rem;
+  padding: 10px 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 0.3rem;
+  background-color: red;
+  color: white;
+}
