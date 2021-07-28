@@ -1,16 +1,51 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
 
+<?php 
+  $query = "SELECT * FROM business";
+  $stmt = mysqli_query($conn, $query);
+?>
+<div class="filters">
+  
+    <span class="spanFiltro">Filtro në bazë të &nbsp;</span>
+    <select name="fetchval" id="fetchval">
+      <?php 
+      echo "<option>All Companies</option>";
+      $item_categorie_options = ["Meat", "Salad", "Pizza", "Pasta"];
+        if (mysqli_num_rows($stmt) > 0) {
+          $companyName = $res['company_name'];
+          foreach ($stmt as $resu){
+            $companyName = $resu['company_name'];
+            echo "<option> $companyName</option>";
+          }
+        }
+      ?>
+    </select>
+    <select name="fetchvalue" id="fetchvalue">
+      <?php
+      echo "<option>All Categories</option>"; 
+        if (mysqli_num_rows($stmt) > 0) {
+          $companyName = $res['company_name'];
+          foreach ($item_categorie_options as $option){
+            echo "<option>$option</option>";
+          }
+        }
+      ?>
+    </select>
+  </div>
+
 <table class="approved_businesses_table">
 
 	<?php 
-    $sql = "SELECT * FROM product  "; 
+    $sql = "SELECT * FROM product ORDER BY business_id "; 
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
+      
   ?>
 
-  <tr>
-      <th>Emri</th>
-      <th>Qmimi</th>
+    <tr>
+      <th>Emri i Kompanisë</th>
+      <th>Emri i Produktit</th>
+      <th>Çmimi</th>
       <th>Përbërësit</th>
       <th>Kategoria</th>
       <th>Shikueshmëria</th>
@@ -20,7 +55,14 @@
 
     <?php 
         while ($row = mysqli_fetch_assoc($result)) {
+          $company_id = $row['business_id'];
+          $query2 = "SELECT * FROM `business` WHERE id = '$company_id'";
+          $result2 = mysqli_query($conn, $query2);
+          while($row2 = mysqli_fetch_assoc($result2)){
+            $company_name = $row2['company_name'];
+          }
           echo "<tr>";
+            echo "<th>".$company_name."</th>";
             echo "<th>". $row['item_name'] ."</th>";
             echo "<th>". $row['item_price'] ."</th>";
             echo "<th>". $row['item_ingridients'] ."</th>";
@@ -57,5 +99,33 @@
       }
     }) 
     }
-  })
+  });
+    $(document).ready(function(){
+    $("#fetchval").on('change' , function(){
+      var value = $(this).val();
+      $.ajax({
+        url:'products/action1.php',
+        type:'POST',
+        data: '&company_name='+value,
+        success:function(data){
+          $(".approved_businesses_table").html(data);
+          $('#fetchvalue option:first').prop('selected',true);
+        }
+      });
+    });
+  });
+  $(document).ready(function(){
+    $("#fetchvalue").on('change' , function(){
+      var value = $(this).val();
+      var company_name = $("#fetchval").val();
+      $.ajax({
+        url:'products/action.php',
+        type:'POST',
+        data: 'request=' + value+"&company_name="+company_name,
+        success:function(data){
+          $(".approved_businesses_table").html(data);
+        }
+      });
+    });
+  });
   </script>
