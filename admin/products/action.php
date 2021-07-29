@@ -53,8 +53,6 @@
           $company_id = $row1['id'];
           $companyName = $row1['company_name'];
         }
-        var_dump($company_id);
-       // var_dump($companyName);
         $query = "SELECT * FROM product WHERE business_id = '$company_id'";
   
         $result = mysqli_query($conn, $query);
@@ -90,6 +88,15 @@
       }
 
         while ($row = mysqli_fetch_assoc($result)) {
+          $business_id = $row['business_id'];
+          $sql1 = "SELECT * FROM `business` WHERE id = '$business_id'";
+          $result1 = mysqli_query($conn, $sql1);
+      
+          while($row1 = mysqli_fetch_assoc($result1)){
+              
+              $company_id = $row1['id'];
+              $company_name = $row1['company_name'];
+          }
           echo "<tr>";
             echo "<th>".$company_name."</th>";
             echo "<th>". $row['item_name'] ."</th>";
