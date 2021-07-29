@@ -16,7 +16,7 @@
       <h1 class="title">Rreth Nesh</h1>
       <div class="content">
         <p class="about_us_section_quick_about">
-          "Ordering Website" është platforma e vetme që do ju duhet ndonjëherë për porositjen e ushqimeve. Platforma jonë ofron mundësinë që ju të zgjedhni qytetin prej nga jeni dhe në sekond ju rekomandon ushqimet më të mira, lira dhe më të vlefshme për ju. Me një klikim të vetëm ju mund të zgjedhni kategorinë tuaj të preferuar të ushqimeve.
+          <strong style="font-weight: bolder;">EaglEats</strong> është platforma e vetme që do ju duhet ndonjëherë për porositjen e ushqimeve. Platforma jonë ofron mundësinë që ju të zgjedhni qytetin prej nga jeni dhe në sekond ju rekomandon ushqimet më të mira, lira dhe më të vlefshme për ju. Me një klikim të vetëm ju mund të zgjedhni kategorinë tuaj të preferuar të ushqimeve.
         </p>
         <?php ?>
       </div> <!-- content -->
