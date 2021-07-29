@@ -5,41 +5,59 @@
     $page = isset($_GET['p'])?$_GET['p']:'';
     $businessId = $_SESSION["userid"];
     if($page == 'add'){
+        //$fileinfo = @getimagesize($_FILES["image"]["tmp_name"]);
         $itemName = $_POST["item_name"];
         $itemIngridients = $_POST["item_ingridients"];
         $itemPrice = $_POST["item_price"];
         $itemCategorie = $_POST["item_categorie"];
         $image = $_FILES["image"]["name"];
         $target = "uploads/".basename($_FILES["image"]["name"]);
-    
+
+        $allowed_image_extension = array(
+            "png",
+            "jpg",
+            "jpeg"
+        );
+        $file_extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
         if(empty($itemName) || empty($itemIngridients) || empty($itemPrice) || empty($itemCategorie) || empty($image)){
-            $_SESSION["errorMessage"] = "Fields can't be empty";
-            header("location: ../index.php");
+            echo "<h1 class='errorMessageChangePassword'>Fields can't be empty! </h1>";
+            //header("location: ../index.php");
+        }else if (! file_exists($_FILES["image"]["tmp_name"])) {
+            echo "<h1 class='errorMessageChangePassword'>Choose image file to upload.</h1>";
+            //header("location: ../index.php");
+        }    // Validate file input to check if is with valid extension
+        else if (! in_array($file_extension, $allowed_image_extension)) {
+            echo "<h1 class='errorMessageChangePassword'>Upload valid images. Only PNG and JPEG are allowed. </h1>";
+            //header("location: ../index.php");
+        }    // Validate image file size
+        else if (($_FILES["image"]["size"] > 5000000)) {
+            echo "<h1 class='errorMessageChangePassword'>Image size exceeds 5MB </h1>";
+            //header("location: ../index.php");
         }else{
             $sql = "INSERT INTO product (business_id, item_name, item_picture, item_ingridients, item_price, item_categorie)";
             $sql .= "VALUES (?, ?, ?, ?, ?,? )";
             if($stmt = mysqli_prepare($conn, $sql)){
-            $stmt->bind_param("isssis", $business_id, $item_Name, $item_Picture, $item_Ingridients, $item_Price, $item_Categorie);
+                $stmt->bind_param("isssis", $business_id, $item_Name, $item_Picture, $item_Ingridients, $item_Price, $item_Categorie);
+                
+                $business_id = $businessId;
+                $item_Name = $itemName;
+                $item_Picture = $image;
+                $item_Ingridients = $itemIngridients;
+                $item_Price = $itemPrice;
+                $item_Categorie = $itemCategorie;
             
-            $business_id = $businessId;
-            $item_Name = $itemName;
-            $item_Picture = $image;
-            $item_Ingridients = $itemIngridients;
-            $item_Price = $itemPrice;
-            $item_Categorie = $itemCategorie;
-        
-            if($execute = mysqli_stmt_execute($stmt)) {
-                move_uploaded_file($_FILES["image"]["tmp_name"], $target);
-                $_SESSION["successMessage"] = "Product added successfully";
-                header("location: ../index.php");
-                exit();
+                if($execute = mysqli_stmt_execute($stmt)) {
+                    move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+                    echo "<h1 class='errorMessageChangePassword'>Image uploaded successfully.</h1>";
+                    //header("location: ../index.php");
+                    exit();
+                }else{
+                    echo "<h1 class='errorMessageChangePassword'>Problem in uploading image files.</h1>";
+                    //header("location: ../index.php");
+                }
             }else{
-                $_SESSION["errorMessage"] = "Something went wrong . Try again!";
-                header("location: ../index.php");
-            }
-            }else{
-              $_SESSION["errorMessage"] = "Error Message";
-              header("location: ../index.php");
+                echo "<h1 class='errorMessageChangePassword'>Error message.</h1>";
+              //header("location: ../index.php");
             }
         }
     }else if($page == 'edit'){
@@ -50,7 +68,7 @@
         $itemPrice = $_POST["item_price"];
         $itemCategorie = $_POST["item_categorie"];
         $id = $_POST['id'];
-        
+        var_dump($id);
 
         if(!empty($image)){
             $sql = "UPDATE product
