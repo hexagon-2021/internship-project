@@ -3,7 +3,7 @@
     <div class="logo">
       <img src="/internship-project/includes/images/hamburger-icon.png" alt="hamburger" />
       <span>
-        Ordering Website
+        EaglEats
       </span>
     </div>
     <i class="bar_icon fa fa-bars" aria-hidden="true"></i>
