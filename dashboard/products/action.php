@@ -20,18 +20,18 @@
         );
         $file_extension = pathinfo($_FILES["image"]["name"], PATHINFO_EXTENSION);
         if(empty($itemName) || empty($itemIngridients) || empty($itemPrice) || empty($itemCategorie) || empty($image)){
-            echo "<h1 class='errorMessageChangePassword'>Fields can't be empty! </h1>";
+            echo "<h1 class='errorMessageCrudProducts'>Fields can't be empty! </h1>";
             //header("location: ../index.php");
         }else if (! file_exists($_FILES["image"]["tmp_name"])) {
-            echo "<h1 class='errorMessageChangePassword'>Choose image file to upload.</h1>";
+            echo "<h1 class='errorMessageCrudProducts'>Choose image file to upload.</h1>";
             //header("location: ../index.php");
         }    // Validate file input to check if is with valid extension
         else if (! in_array($file_extension, $allowed_image_extension)) {
-            echo "<h1 class='errorMessageChangePassword'>Upload valid images. Only PNG and JPEG are allowed. </h1>";
+            echo "<h1 class='errorMessageCrudProducts'>Upload valid images. Only PNG and JPEG are allowed. </h1>";
             //header("location: ../index.php");
         }    // Validate image file size
         else if (($_FILES["image"]["size"] > 5000000)) {
-            echo "<h1 class='errorMessageChangePassword'>Image size exceeds 5MB </h1>";
+            echo "<h1 class='errorMessageCrudProducts'>Image size exceeds 5MB </h1>";
             //header("location: ../index.php");
         }else{
             $sql = "INSERT INTO product (business_id, item_name, item_picture, item_ingridients, item_price, item_categorie)";
@@ -48,53 +48,51 @@
             
                 if($execute = mysqli_stmt_execute($stmt)) {
                     move_uploaded_file($_FILES["image"]["tmp_name"], $target);
-                    echo "<h1 class='errorMessageChangePassword'>Image uploaded successfully.</h1>";
+                    echo "<h1 class='errorMessageCrudProducts'>Product uploaded successfully.</h1>";
                     //header("location: ../index.php");
                     exit();
                 }else{
-                    echo "<h1 class='errorMessageChangePassword'>Problem in uploading image files.</h1>";
+                    echo "<h1 class='errorMessageCrudProducts'>Problem in uploading product.</h1>";
                     //header("location: ../index.php");
                 }
             }else{
-                echo "<h1 class='errorMessageChangePassword'>Error message.</h1>";
+                echo "<h1 class='errorMessageCrudProducts'>Error message.</h1>";
               //header("location: ../index.php");
             }
         }
     }else if($page == 'edit'){
         $itemName = $_POST["item_name"];
         $itemIngridients = $_POST["item_ingridients"];
-        $image = $_POST["image"];
-        $target = "uploads/".basename($_FILES["image"]["name"]);
+        //$image = $_POST["image"];
+        //$target = "uploads/".basename($_FILES["image"]["name"]);
         $itemPrice = $_POST["item_price"];
         $itemCategorie = $_POST["item_categorie"];
         $id = $_POST['id'];
-        var_dump($id);
 
-        if(!empty($image)){
+        /*if(!empty($image)){
             $sql = "UPDATE product
                 SET item_name='$itemName', item_picture = '$image', item_ingridients='$itemIngridients', item_price='$itemPrice', item_categorie='$itemCategorie'
                 WHERE id = '$id'";
-        }else{
+        }else{*/
             $sql = "UPDATE product
                     SET item_name='$itemName', item_ingridients='$itemIngridients', item_price='$itemPrice', item_categorie='$itemCategorie'
                     WHERE id = '$id'";
-        }
+        /*}*/
 
         $Execute = mysqli_query($conn, $sql);
-        move_uploaded_file($_FILES["image"]["tmp_name"], $target);
+        //move_uploaded_file($_FILES["image"]["tmp_name"], $target);
         if($Execute){
-            $_SESSION["successMessage"] = $target."Product Updated Successfuly";
-            
+            echo "<h1 class='errorMessageCrudProducts'>Product Updated Successfuly</h1>";
         }else{
-            $_SESSION["errorMessage"] = "Something went wrong. Try again!";
+            echo "<h1 class='errorMessageCrudProducts'>Something went wrong. Try again!</h1>";
         }
     }else if($page == 'delete'){
         $id=$_GET['id'] ;
         $sql = "DELETE FROM product WHERE id='$id'";
         if(mysqli_query($conn, $sql)){
-            echo "Records were deleted successfully.";
+            echo "<h1 class='errorMessageCrudProducts'>Product was deleted successfully.</h1>";
         } else{
-            echo "ERROR: Could not able to execute $sql. " . mysqli_error($conn);
+            echo "<h1 class='errorMessageCrudProducts'>Something went wrong. Try again!</h1>";
         }
     }else{
         $user_id = $_SESSION['userid'];
@@ -126,9 +124,16 @@
                 
                 <tr id="tdata">
                     <form method="POST" id="editForm-<?php echo $row['id'] ?>"  enctype="multipart/form-data">
+                        <?php if (isset($_GET['error'])) { ?>
+                            <p class="error"><?php echo $_GET['error']; ?></p>
+                        <?php } ?>
+
+                        <?php if (isset($_GET['success'])) { ?>
+                            <p class="success"><?php echo $_GET['success']; ?></p>
+                        <?php } ?>
                         <th><input name="item_name" type="text" id="item_name-<?php echo $row['id']; ?>" name="view_product_edit_product_name" class="view_product_edit_component" value="<?php echo htmlentities($itemName) ?>" /></th>
                         <th>
-                            <input name="image" class="transparent_file" id="image-<?php echo $row['id']; ?>" name="image" type="file"/> <img width="60"  src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" />
+                             <img width="60"  src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" />
                         </th>
                         <th><input type="text" name="item_ingridients" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
                         <th><input type="number" name="item_price" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>

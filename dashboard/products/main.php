@@ -69,8 +69,9 @@
           success:function(response){
             $("#result").html(response);
             $("#add-form")[0].reset();
-            //$("#editProfile-div").html('');
-            //$("#editProfile-div").fadeOut("slow");
+            setTimeout(function(){
+              $("#result").fadeOut("slow");
+            }, 3000);
             
           },
           error:function(response){
@@ -106,9 +107,12 @@
 		//enctype: 'multipart/form-data',
 		data:  "item_name="+item_name+"&item_ingridients="+item_ingridients+"&item_price="+item_price+"&item_categorie="+item_categorie+"&image="+index+"&id="+id,
 		//data: {item_name:item_name, item_ingridients:item_ingridients, item_price:item_price, item_categorie:item_categorie, image:image},
-		success:function(data){
+		success:function(response){
 			viewData();
-			console.log(index);
+			$("#result").html(response);
+			setTimeout(function(){
+              $("#result").fadeOut("slow");
+            }, 3000);
 		}
 	});
   	}
@@ -121,6 +125,9 @@
 			data: "id="+id,
 			success: function(data){
 				viewData();
+				setTimeout(function(){
+              	$("#result").fadeOut("slow");
+            	}, 3000);
 			}
 		})
 	}	

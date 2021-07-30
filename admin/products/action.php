@@ -84,7 +84,7 @@
     
           <?php
       }else{
-        echo "Sorry! no record Found";
+        echo "<h1 class='errorMessageFilterProducts'>Sorry! no record Found </h1>";
       }
 
         while ($row = mysqli_fetch_assoc($result)) {
