@@ -10,6 +10,11 @@
     <ul class="navbar_ul_items">
       <?php 
         $list = $links = $i_class = [];
+        if ($active == "Ballina") {
+          array_push($list, "Ballina");
+          array_push($links, '/internship-project/');
+          array_push($i_class, "home");
+        }
         if (isset($_SESSION['userid'])) {
           array_push($list, "Rreth Nesh");
           array_push($links, "/internship-project/about.php");
