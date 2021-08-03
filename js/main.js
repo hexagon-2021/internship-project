@@ -60,3 +60,18 @@ $(document).on('click', "#edit_password_toggler", function() {
   }
   edit_password_toggler_text +=1;
 });
+
+$(".cities_to_select > button.city_selectable").click(function() {
+  let el = $(this)[0];
+  let city = this.innerHTML.substring(18);
+
+  setCookie('city', city, .2);
+  window.location.href = 'view_products/index.php';
+});
+
+function setCookie(cname, cvalue, exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
