@@ -42,6 +42,30 @@ CREATE TABLE ratings (
   `date_added` timestamp(6) NOT NULL DEFAULT current_timestamp(6) ON UPDATE current_timestamp(6)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+CREATE TABLE `inbox` (
+  `id` int(10) NOT NULL,
+  `sender_id` int(10) NOT NULL,
+  `receiver_id` int(10) NOT NULL,
+  `subject` varchar(256) NOT NULL,
+  `message` varchar(256) NOT NULL,
+  `data` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Indexes for table `inbox`
+--
+ALTER TABLE `inbox`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `sender_id_fk` (`sender_id`),
+  ADD KEY `receiver_id_fk` (`receiver_id`);
+
+ALTER TABLE `inbox`
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT;
+  
+  ALTER TABLE `inbox`
+  ADD CONSTRAINT `receiver_id_fk` FOREIGN KEY (`receiver_id`) REFERENCES `business` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `sender_id_fk` FOREIGN KEY (`sender_id`) REFERENCES `business` (`id`) ON DELETE CASCADE;
+
 ALTER TABLE `product`
   ADD KEY `business_id` (`business_id`);
 
