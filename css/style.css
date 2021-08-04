@@ -1217,3 +1217,38 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   font-weight: bold;
   font-family: "Dela Gothic One", cursive;
 }
+.product-form{
+  display: flex;
+  flex-flow: row wrap;
+  align-content: space-between;
+  justify-content: space-between;
+  width: 100%;
+  padding-right: auto;
+  padding-left: auto;
+}
+.card{
+  margin: 0 auto;
+  float: none;
+  max-width: 400px !important;
+  height: auto !important;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  border:solid black 1px;
+}
+.card-text{
+  padding-left: 7px;
+}
+.btnSearch{
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: var(--secondary-color);
+  color: white;
+  border:none;
+}
+.card img{
+  width: 200% !important;
+  height: 200px !important;
+}
