@@ -28,11 +28,25 @@
         $dashboard_categories = ["Produktet", "Edito Profilin"];
         $dashboard_categories_files_name = ["products", "profile_edit"];
          $i_class = ["fas fa-shopping-basket", "fas fa-user-edit"];
-      ?>
-      <img src="../includes/images/profile_pictures/mcd.jpg" alt="company_picture" width="200px" />
-      <h3 class="company_info_component" id="company_info_name">
-        <label>McDonald's</label> <br />
-        <label for="location" style="font-size: 24px;"><i class="fas fa-compass"></i> Lokacioni: Ferizaj</label>
+          while ($row = mysqli_fetch_assoc($query)) {
+          $logo = $row['company_logo'];
+          $company_name = $row['company_name'];
+          $company_city = $row['company_city'];
+          }
+            if ($logo != "") { ?>
+              <img src="profile_edit/company_logo/<?php echo $logo ?>" alt="company_picture" width="200px" />
+              <?php
+              }
+
+              else { ?>
+                <img src="../includes/images/profile_pictures/avatar.png" alt="company_picture" width="200px" />
+                <?php 
+                }
+                ?>
+     
+        <h3 class="company_info_component" id="company_info_name">
+        <label><?php echo $company_name ?> </label> <br />
+        <label for="location" style="font-size: 24px;"><i class="fas fa-compass"></i> Lokacioni: <?php echo $company_city; ?> </label>
       </h3>
       <!-- <div id="company_info_component_wrapper">
         <span class="company_info_component" id="company_info_city">
