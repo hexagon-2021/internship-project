@@ -95,8 +95,16 @@
             echo "<h1 class='errorMessageCrudProducts'>Something went wrong. Try again!</h1>";
         }
     }else{
+        $limit = 1;
+
+	    if (isset($_POST['page_no'])) {
+	        $page_no = $_POST['page_no'];
+	    }else{
+	        $page_no = 1;
+	    }
         $user_id = $_SESSION['userid'];
-        $sql = "SELECT * FROM product WHERE business_id = '$user_id' ORDER BY id desc";
+        $offset = ($page_no-1) * $limit;
+        $sql = "SELECT * FROM product WHERE business_id = '$user_id' LIMIT $offset, $limit";
         $stmt = mysqli_query($conn, $sql) or die('error');
         if(mysqli_num_rows($stmt) > 0){ ?>
             <table>
@@ -133,7 +141,7 @@
                         <?php } ?>
                         <th><input name="item_name" type="text" id="item_name-<?php echo $row['id']; ?>" name="view_product_edit_product_name" class="view_product_edit_component" value="<?php echo htmlentities($itemName) ?>" /></th>
                         <th>
-                             <img width="60"  src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" />
+                             <img width="70" height="70"  src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" />
                         </th>
                         <th><input type="text" name="item_ingridients" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
                         <th><input type="number" name="item_price" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
@@ -170,7 +178,49 @@
                     </> <!---display_products -->
                 <?php
                 }  ?>
-            </table> <?php                      
+            </table><?php
+                $sql3 = "SELECT * FROM product WHERE business_id = '$user_id'";
+
+                $records = mysqli_query($conn, $sql3);
+
+                $totalRecords = mysqli_num_rows($records);
+
+                $totalPage = ceil($totalRecords/$limit); 
+            ?>
+            <!--<nav class="pagination">
+                <ul class='nav-pages' style='margin:20px 0'>
+                    <?php 
+                    if(isset($page_no)){
+                        if($page_no > 1){ 
+                            
+                        ?>
+                            <li class="page-item">
+                                <a href="" id='<?php ($page_no-1) ?>' class="page-link">&laquo;</a>
+                            </li>
+                        <?php }
+                    }
+                    for ($i=1; $i <= $totalPage ; $i++) { 
+                    if ($i == $page_no) {
+                        $active = "active";
+                    }else{
+                        $active = "";
+                    }
+                    ?>
+                        <li class='page-item <?php echo $active?>'><a class='page-link' id='<?php echo $i ?>' href=''><?php echo $i ?></a></li>
+                        <?php
+                    }
+                    if(isset($page_no) && !empty($page_no)){
+                        if($page_no+1 <= $totalPage){ ?>
+                            <li class="page-item mx-1">
+                                <a href="" class="page-link" id='<?php ($page_no+1) ?>'>&raquo;</a>
+                            </li>
+                        <?php }
+                    }
+                    ?>
+                </ul>
+            </nav> -->
+        <?php
+                             
         }else{
             echo "<table></table>";
         }

@@ -12,7 +12,7 @@
   <link rel="stylesheet" type="text/css" href="../css/style.css" />
   <script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>
 </head>
-<body onload="viewData()">
+<body >
   <?php 
     $active = "Dashboard";
     include '../includes/nav.inc.php'; 
@@ -101,11 +101,11 @@
     $(document).ready(function() {
       $("button.menu_actions_btn[value='products']").addClass("active_action");
       $(".main > .content").load("products/main.php");
-      viewData();
+      //viewData();
     });
   </script>
   <script>
-    function viewData(){
+    /*function viewData(){
       $.ajax({
         url: "products/action.php",
         success: function(data){
@@ -113,7 +113,7 @@
           $("#add-form")[0].reset();
         } 
       });
-    }
+    }*/
   </script>
 </body>
 </html>

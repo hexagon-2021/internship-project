@@ -18,8 +18,8 @@ $("#navbar > div > i").click(function() {
 
 var add_product_toggler_text = 0;
 $(document).on('click', "#add_product_toggler", function() {
-  $("div.dashboard #products #add-form-div").toggle(400);
-  $("div.dashboard #products .dashboard_section_title#add_products_section_title").toggle(400);
+  $("div.dashboard #products #add-form-div").toggle();
+  $("div.dashboard #products .dashboard_section_title#add_products_section_title").toggle();
   if (add_product_toggler_text % 2 == 0) {
     $(this).html("Largo Formen");
   } else {
@@ -39,20 +39,27 @@ $(document).ready(function() {
 })
 var edit_profile_toggler_text = 0;
 $(document).on('click', "#edit_profile_toggler", function() {
-  $("div.dashboard #products #editProfile-div").toggle(400);
-  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").toggle(400);
+  $("div.dashboard #products #formChange-div").hide();
+  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").hide();
+  $("div.dashboard #products #editProfile-div").toggle();
+  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").toggle();
+  $("#edit_password_toggler").html("Ndrysho Passwordin");
   if (edit_profile_toggler_text % 2 == 0) {
-    $(this).html("Largo Formen");
-  } else {
     $(this).html("Ndrysho Profilin");
+  } else {
+    
+    $(this).html("Largo Formen");
   }
   edit_profile_toggler_text +=1;
 });
 
 var edit_password_toggler_text = 0;
 $(document).on('click', "#edit_password_toggler", function() {
-  $("div.dashboard #products #formChange-div").toggle(400);
-  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").toggle(400);
+  $("div.dashboard #products #editProfile-div").hide();
+  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").hide();
+  $("div.dashboard #products #formChange-div").toggle();
+  $("div.dashboard #products .changePasswordTxt#edit_profile_section_title").toggle();
+  $("#edit_profile_toggler").html("Edito Profilin");
   if (edit_password_toggler_text % 2 == 0) {
     $(this).html("Largo Formen");
   } else {

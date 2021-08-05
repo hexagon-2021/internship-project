@@ -2,7 +2,7 @@
 <?php require_once("../../includes/functions.inc.php") ?>
 <?php require_once("../../includes/session.php") ?>
 <?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; ?>
-<body onload="viewData()">
+<body >
 <section class="dashboard_categorie" id="products">
   <div class="container">
   <h3 id="result"></h3>
@@ -41,21 +41,13 @@
     <div id="display_products" class="display_products" style="overflow-x: auto;">
             
     </div>
+	<?php include("pagination.php"); ?>
   </div> <!-- container -->
 </section> <!-- #products -->
 </body>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
-	function viewData(){
-		$.ajax({
-			url: "products/action.php",
-			success: function(data){
-				$('#display_products').html(data);
-				$("#add-form")[0].reset();
-			} 
-		});
-  }
   $("#add-form").on('submit' , function(e){
       e.preventDefault();
       var formData = new FormData(this);
@@ -79,15 +71,32 @@
           },
         });
     });
-  function viewData(){
-		$.ajax({
-			url: "products/action.php",
-			success: function(data){
-				$('#display_products').html(data);
-				$("#add-form")[0].reset();
-			} 
+	$(document).ready(function(){
+		function viewData(page){
+				$.ajax({
+					url: "products/action.php",
+					type: "POST",
+					data : {page_no:page},
+					success: function(data){
+						$('#display_products').html(data);
+						$("#add-form")[0].reset();
+					} 
+				});
+  		}
+		viewData();
+    
+		// Pagination code
+		$(document).on("click", ".nav-pages li ", function(e){
+			$(".nav-pages li").removeClass("active");
+			e.preventDefault();
+			let el = $(this);
+			el.addClass("active");
+			console.log(el);
+			var pageId = $(this).attr("id");
+			console.log(pageId);
+			viewData(pageId);
 		});
-  }
+	});
   function updateData(str){
 	var id = str;
 	console.log(id);	

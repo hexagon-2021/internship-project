@@ -1252,3 +1252,59 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   width: 200% !important;
   height: 200px !important;
 }
+/* PAGINATION */
+.pagination{
+  overflow:hidden;
+  /*background:$wht;*/
+  border-radius: 5px;
+  box-shadow:0 0 20px 0 rgba(#000,0.05);
+  font-size:1.5em;
+  display: flex;
+  position: relative;
+  user-select: none;
+}
+.nav-btn{
+  font-weight: 900;
+  display: inline-block;
+  padding:18px 24px;
+  z-index: 2;
+  cursor:pointer;
+  transition:all 300ms ease;
+} 
+.pagination{
+  display: block;
+  text-align: center;
+}
+.pagination .nav-pages {
+  margin: 0;
+  padding: 0;
+  left: 0;
+}
+.pagination .nav-pages li {
+  font-size: 15px;
+  font-weight: 800;
+  list-style: none;
+  display: inline-block;
+  padding: 8px 10px;
+  border: 1px solid var(--secondary-color) ;
+  color: var(--secondary-color);
+  text-align: center;
+  cursor: pointer;
+}
+.pagination li{
+      list-style:none;
+      display:inline-block;
+      padding:18px 10px;
+      border-right:1px solid #eee;
+      text-align: center;
+      cursor:pointer;
+      text-decoration: none;
+}
+.pagination li a{
+  text-decoration: none;
+  color: var(--secondary-color);
+}
+.pagination li.active {
+  background-color: var(--first-color);
+  color: var(--secondary-color);
+}
