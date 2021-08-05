@@ -5,7 +5,7 @@
 <section class="dashboard_categorie" id="products">
   <h1 class="dashboard_section_title">Edito Profilin</h1>
   <button id="edit_password_toggler">Ndrysho Passwordin</button>
-  <button id="edit_profile_toggler">Ndrysho Profilin</button>
+  <button id="edit_profile_toggler">Largo Formen</button>
   <h3 id="result"></h3>
 <div class="formChange" id="formChange-div">
 
@@ -49,7 +49,7 @@
 
   </form>
 </div>
-<div id="editProfile-div">
+<div id="editProfile-div"  style="display: block;">
   <?php 
     
     $userId = $_SESSION['userid'];
@@ -120,12 +120,12 @@
           // dataType: 'json',
           success:function(response){
             $("#result").html(response);
-            setTimeout(function(){
-              $("#result").fadeOut("slow");
+            //setTimeout(function(){
+              $("#result").toggle();
               $("#op").val("");
               $("#np").val("");
               $("#c_np").val("");
-            }, 3000);
+           // }, 3000);
           },
           error:function(response){
             $("#result").html(response);
