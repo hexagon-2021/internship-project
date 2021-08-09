@@ -1,5 +1,5 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
-<div class="filters">
+  <div class="filters">
     <span class="spanFiltro">Filtro në bazë të &nbsp;</span>
     <select name="fetchval" id="fetchval">
       <option value="" disabled="" selected="">Select Filter</option>
@@ -14,7 +14,7 @@
   </div>
   <table class="approved_businesses_table">
   <?php 
-    $sql = "SELECT * FROM business WHERE aproved=1 AND username != 'admin'; ";
+    $sql = "SELECT * FROM business WHERE status='Active' AND username != 'admin'; ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
   ?>
@@ -58,7 +58,6 @@
     echo "<h1 style='color: var(--secondary-color);text-align: center;'>Nuk ka biznese ne pritje!</h1>";
   } ?>
 </table>
-
 <script>
   
   $(".delete_business_action").on('click', function(e) {
@@ -82,18 +81,31 @@
   })
   
   $(".change_business_status").change(function() {
-    let value = this.value;
+    let value = null;
+    value = this.value;
     let id = this.id.split("_").pop();
-    $.ajax({
-      url: "approved/action.php",
-      type: "POST",
-      data: {
-        action_id: id,
-        action: value
-      },
-      success: function(data) {
-        $(".display_approved_businesses").load("approved/view.php");
-      }
+    $("div.inboxMessageForm").hide();
+    $("div.inboxMessageForm").show();
+    $("div.inboxMessageForm > form > input[name='Subject']").val("");
+    $("div.inboxMessageForm > form > textarea[name='Message']").val("");
+    $("div.inboxMessageForm > form").submit(function(e) {
+      e.preventDefault();
+      let subject = $("div.inboxMessageForm > form > input[name='Subject']").val();
+      let message = $("div.inboxMessageForm > form > textarea[name='Message']").val();
+      $.ajax({
+        url: "approved/action.php",
+        type: "POST",
+        data: {
+          action_id: id,
+          action: value,
+          subject: subject,
+          message: message,
+        },
+        success: function(data) {
+          $("div.inboxMessageForm").hide();
+          $(".display_approved_businesses").load("approved/view.php");
+        }
+      })
     })
   });
   

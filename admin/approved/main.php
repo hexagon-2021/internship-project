@@ -4,5 +4,8 @@
     <div class="display_approved_businesses">
       <?php include 'view.php'; ?>
     </div> <!-- .display_businesses -->
+    
+
+    <?php include '../../includes/inbox_message_form.inc.php'; ?>
   </div> <!-- container -->
 </section> <!-- #pending_businesses -->

@@ -19,9 +19,9 @@
     <div class="menu">
       <h1 class='menu_title'>Super Admin</h1>
       <?php 
-        $dashboard_categories = ["Në Pritje", "Te aprovuara", "Produktet", "Kontaktet", "Vleresimet"];
-        $dashboard_categories_files_name = ["pending", "approved", "products", "contacts", "rating"];
-        $i_class = ["fas fa-history", "fas fa-clipboard-check", "fas fa-shopping-basket", "fas fa-envelope", "fas fa-star-half-alt"];
+        $dashboard_categories = ["Inbox", "Në Pritje", "Aktive", "Jo Aktive", 'Suspenduara', "Produktet", "Kontaktet", "Vleresimet"];
+        $dashboard_categories_files_name = ["inbox", "pending", "approved", "inactive", "suspended", "products", "contacts", "rating"];
+        $i_class = ["fas fa-inbox", "fas fa-history", "fas fa-clipboard-check", "fas fa-user-slash", "fas fa-user-lock", "fas fa-shopping-basket", "fas fa-envelope", "fas fa-star-half-alt"];
       ?>
       
       <div id="menu_actions">
@@ -54,8 +54,8 @@
   <script src="../js/main.js"></script>
   <script>
     $(document).ready(function() {
-      $("button.menu_actions_btn[value='pending']").addClass("active_action");
-      $(".main > .content").load("pending/main.php");
+      $("button.menu_actions_btn[value='approved']").addClass("active_action");
+      $(".main > .content").load("approved/main.php");
     });
   </script>
 </body>

@@ -1,5 +1,6 @@
 <?php 
   require_once('../../includes/dbh.inc.php');
+  require_once('../../includes/functions.inc.php');
 
   if (isset($_POST['id'])) {
     $id = (int) $_POST['id'];
@@ -10,14 +11,15 @@
   if (isset($_POST['action'])) {
     $id = mysqli_real_escape_string($conn, $_POST['action_id']);
     $status = mysqli_real_escape_string($conn, $_POST['action']);
-    mysqli_query($conn, "UPDATE business SET status='$status' WHERE id=$id; ");
-    echo "UPDATE business SET status='$status' WHERE id=$id; ";
+    $message = mysqli_real_escape_string($conn, $_POST['message']);
+    $subject = mysqli_real_escape_string($conn, $_POST['subject']);
+    // mysqli_query($conn, "UPDATE business SET status='$status' WHERE id=$id; ");
+    // sendInboxMessage($conn, 1, $id, $subject, $message, date('Y-m-d'));
   }
 
 if (isset($_POST['request'])) {
 	$request = $_POST['request'];
-
-	$query = "SELECT * FROM business WHERE company_city ='$request'";
+	$query = "SELECT * FROM business WHERE company_city ='$request' AND status='Active'; ";
 
 	$result = mysqli_query($conn, $query);
 	$count = mysqli_num_rows($result);

@@ -2,7 +2,7 @@
 
 <table class="pending_businesses_table">
   <?php 
-    $sql = "SELECT * FROM business WHERE aproved=0 AND username!='admin'; ";
+    $sql = "SELECT * FROM business WHERE status='Pending' AND username!='admin'; ";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
   ?>

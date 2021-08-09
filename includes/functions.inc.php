@@ -90,7 +90,7 @@ function companyNameExists($conn, $companyName){
 	mysqli_stmt_close($stmt);
 }
 function createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number, $document_name){
-	$sql = "INSERT INTO business (  username, password ,email,company_name, company_city, phone_number, name, document_name) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+	$sql = "INSERT INTO business (  username, password ,email,company_name, company_city, phone_number, name, document_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
 		header("location: ../signupForm.php?error=stmtfailed");
@@ -98,8 +98,8 @@ function createUser($conn, $name, $email, $username, $pwd, $companyName, $compan
 	}
 
 	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
-
-	mysqli_stmt_bind_param($stmt, "ssssssss", $username,$hashedPwd,$email, $companyName,    $companyCity, $phone_number,$name, $document_name);
+	$status = 'Pending';
+	mysqli_stmt_bind_param($stmt, "sssssssss", $username,$hashedPwd,$email, $companyName,    $companyCity, $phone_number,$name, $document_name, $status);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
 	header("location: ../signupForm.php?error=none");
@@ -210,4 +210,9 @@ function createMessage($conn, $name, $email, $message){
 	mysqli_stmt_close($stmt);
 	header("location: ../contact.php?error=none");
 		exit();
+}
+
+
+function sendInboxMessage($conn, $sender_id, $receiver_id, $subject, $message, $date) {
+	mysqli_query($conn, "INSERT INTO inbox (sender_id, receiver_id, subject, message, data) VALUES ('$sender_id', '$receiver_id', '$subject', '$message', '$date');");
 }
