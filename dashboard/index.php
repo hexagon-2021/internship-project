@@ -25,9 +25,9 @@
   <div class="dashboard">
     <div class="menu">
       <?php 
-        $dashboard_categories = ["Produktet", "Edito Profilin"];
-        $dashboard_categories_files_name = ["products", "profile_edit"];
-         $i_class = ["fas fa-shopping-basket", "fas fa-user-edit"];
+         $dashboard_categories = ["Produktet", "Edito Profilin", "Inbox"];
+         $dashboard_categories_files_name = ["products", "profile_edit", "inbox"];
+         $i_class = ["fas fa-shopping-basket", "fas fa-user-edit", "fa fa-inbox"];
           while ($row = mysqli_fetch_assoc($query)) {
           $logo = $row['company_logo'];
           $company_name = $row['company_name'];
