@@ -1306,18 +1306,22 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   flex-flow: row wrap;
   align-content: space-between;
   justify-content: space-between;
-  width: 100%;
+  width: 80%;
   padding-right: auto;
   padding-left: auto;
+  margin-left: 10%;
 }
 .card{
   margin: 0 auto;
   float: none;
-  max-width: 400px !important;
-  height: auto !important;
+  width: 400px !important;
+  height: 250px !important;
   margin-top: 30px;
   margin-bottom: 30px;
-  border:solid black 1px;
+  border:none !important;
+  background-color: var(--fourth-color) !important;
+  border-radius: 0.7rem !important;
+  
 }
 .card-text{
   padding-left: 7px;
@@ -1331,10 +1335,27 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
   background-color: var(--secondary-color);
   color: white;
   border:none;
+  border-radius: 0.7rem;
 }
 .card img{
-  width: 200% !important;
-  height: 200px !important;
+  flex-shrink: 0 !important;
+  min-width: 100% !important;
+  min-height: 100% !important;
+}
+.img_card{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  height: 200px;
+ /* border: 1px solid black !important;*/
+ /* border-radius: 50% 20% / 10% 40% !important;*/
+ /*border-radius: 25% 10% !important;*/
+ border-radius: 30px;
+ /*border-radius: 0.7rem;*/
+}
+.card p{
+  margin-bottom: 0px !important;
 }
 /* PAGINATION */
 .pagination{
@@ -1391,4 +1412,81 @@ div.dashboard#admin_dashboard .menu div#menu_actions {
 .pagination li.active {
   background-color: var(--first-color);
   color: var(--secondary-color);
+}
+
+@media screen and (max-width : 900px) {
+  .view_products_form{
+    width: 100%;
+    
+  }
+ .text-left button{
+  display: block;
+  width: 80%;
+  margin: 5px auto;
+  height: 50px;
+  padding: 2px ;
+ }
+
+ .form-control{
+  width: 80% !important;
+  margin: 15px auto;
+ }
+}
+@media screen and (max-width : 1000px) {
+  .view_products_form{
+    width: 100%;
+    
+  }
+  .text-left button{
+  display: block;
+  width: 70%;
+  margin: 5px auto;
+  height: 50px;
+   padding-top: 2px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 2px;
+ }
+ .form-control{
+  width: 80% !important;
+  margin: 15px auto;
+ }
+}
+@media screen and (min-width : 1000px) {
+  .view_products_form{
+    width: 100%;
+  }
+  .text-left button{
+    height: 60px;
+    padding-top: 2px;
+    padding-left: 0;
+    padding-right: 0;
+    padding-bottom: 2px;
+    width: 60% !important;
+    margin-right: 5px;
+  }
+.text-left{
+  display: flex;
+  flex-direction: row;
+  max-width: 60% !important; 
+}
+.btnSearch{
+  /*padding-left: 50px !important;
+  padding-right: 50px !important;*/
+  padding: 0px !important;
+  margin-right: 10px !important;
+}
+}
+@media screen and (min-width : 1200px) {
+  .btnSearch{
+  margin-top: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: var(--secondary-color);
+  color: white;
+  border:none;
+  border-radius: 0.7rem;
+}
 }
