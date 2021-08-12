@@ -77,3 +77,20 @@ ALTER TABLE `business` ADD `aproved` TINYINT(1) NOT NULL AFTER `phone_number`;
 ALTER TABLE `business` ADD `document_name` VARCHAR(256) NOT NULL AFTER `phone_number`;
 
 ALTER TABLE `business` ADD `status` VARCHAR(256) NOT NULL AFTER `document_name`;
+
+CREATE TABLE `cart` (
+  `id` int(11) NOT NULL,
+  `ip` varchar(15) NOT NULL,
+  `products` varchar(256) NOT NULL,
+  `quantities` int(11) NOT NULL,
+  `date` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Indexes for table `cart`
+ALTER TABLE `cart`
+  ADD PRIMARY KEY (`id`);
+
+-- AUTO_INCREMENT for table `cart`
+ALTER TABLE `cart`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
