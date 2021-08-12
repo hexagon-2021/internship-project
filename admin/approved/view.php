@@ -1,4 +1,4 @@
-<?php require_once("../../includes/dbh.inc.php") ?>
+<?php session_start(); require_once("../../includes/dbh.inc.php") ?>
   <div class="filters">
     <span class="spanFiltro">Filtro në bazë të &nbsp;</span>
     <select name="fetchval" id="fetchval">
