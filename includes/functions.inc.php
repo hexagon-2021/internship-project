@@ -216,3 +216,51 @@ function createMessage($conn, $name, $email, $message){
 function sendInboxMessage($conn, $sender_id, $receiver_id, $subject, $message, $date) {
 	mysqli_query($conn, "INSERT INTO inbox (sender_id, receiver_id, subject, message, data) VALUES ('$sender_id', '$receiver_id', '$subject', '$message', '$date');");
 }
+function createUsers($conn, $name, $email, $username, $pwd, $phone_number){
+	$sql2 = "INSERT INTO users (  username, password ,email, phone_number, full_name) VALUES (?, ?, ?, ?, ?);";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql2)) {
+		header("location: ../users/view.php?error=stmtfailed");
+		exit();
+	}
+
+	$hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
+
+	mysqli_stmt_bind_param($stmt, "sssss", $username,$hashedPwd,$email,$phone_number,$name);
+	mysqli_stmt_execute($stmt);
+	mysqli_stmt_close($stmt);
+	header("location: ../users/view.php?error=none");
+		exit();
+}
+function emptyInputSignupUsers($name, $email, $username, $pwd, $pwdRepeat,  $phone_number){
+	$result;
+	if(empty($name) || empty($email) || empty($username) || empty($pwd) || empty($pwdRepeat)  || empty($phone_number) || empty($username)) {
+		$result = true;
+	}
+	else{
+		$result = false;
+	}
+	return $result;
+}
+function usersUidExists($conn, $username, $email){
+	$sql2 = "SELECT * FROM users WHERE username = ? OR email = ?;";
+	$stmt = mysqli_stmt_init($conn);
+	if (!mysqli_stmt_prepare($stmt, $sql2)) {
+		header("location: view.php?error=stmtfailed");
+		exit();
+	}
+
+	mysqli_stmt_bind_param($stmt, "ss", $username, $email);
+	mysqli_stmt_execute($stmt);
+
+	$resultData = mysqli_stmt_get_result($stmt);
+
+	if ($row = mysqli_fetch_assoc($resultData)) {
+		return $row;
+	}
+	else{
+		$result = false;
+		return $result;
+	}
+	mysqli_stmt_close($stmt);
+}
