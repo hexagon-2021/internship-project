@@ -1,7 +1,7 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
 <?php require_once("../../includes/functions.inc.php") ?>
 <?php require_once("../../includes/session.php") ?>
-<?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat"]; ?>
+<?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat" , "Rice" , "Noodles" , "Fish" , "Eggs" , "Cake" , "Fruit", "Vegetables" , "Traditional"]; ?>
 <body >
 <section class="dashboard_categorie" id="products">
   <div class="container">
