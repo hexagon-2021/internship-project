@@ -456,7 +456,6 @@ nav#navbar .container .logo span {
   font-weight: bold;
   letter-spacing: 1px;
   font-size: 1.2rem;
-  font-family: "Dela Gothic One", cursive;
 }
 
 nav#navbar .container i.bar_icon {
@@ -527,7 +526,7 @@ nav#navbar ul.navbar_ul_items li a:hover {
   text-align: center;
   color: var(--secondary-color);
   font-size: 2rem;
-  font-family: "Dela Gothic One", cursive;
+
   letter-spacing: 1px;
 }
 
@@ -604,7 +603,7 @@ div.dashboard div.main h2 select.dashboard_categorie_change_select {
   color: var(--secondary-color);
   background: var(--first-color);
   font-weight: bold;
-  font-family: "Dela Gothic One", cursive;
+  
   border: 2px solid var(--secondary-color);
   border-radius: 0.1rem;
 }
@@ -616,7 +615,7 @@ div.dashboard
   h1.dashboard_section_title {
   text-align: center;
   color: var(--secondary-color);
-  font-family: "Dela Gothic One", cursive;
+ 
   font-size: 2em;
 }
 div.dashboard #products #formChange-div,
@@ -1258,13 +1257,13 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
 .changePasswordTxt {
   color: var(--secondary-color);
   /*font-weight: bold;*/
-  font-family: "Dela Gothic One", cursive;
+  
   font-size: 30px;
 }
 
 .labelTxtChangePassword,
 .labelTxtEditProfile {
-  font-family: "Dela Gothic One", cursive;
+  
   font-size: 20px;
   color: var(--first-color);
   margin-top: 10px;
@@ -1299,7 +1298,7 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
 .errorMessageChangePassword {
   color: var(--secondary-color);
   /*font-weight: bold;*/
-  font-family: "Dela Gothic One", cursive;
+  
   font-size: 20px;
 }
 
@@ -1342,7 +1341,7 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
-  font-family: "Dela Gothic One", cursive;
+  
 }
 
 .delete_product_action {
@@ -1370,7 +1369,7 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
   font-size: 20px;
   margin-bottom: 10px;
   font-weight: bold;
-  font-family: "Dela Gothic One", cursive;
+  
 }
 
 .product-form {
