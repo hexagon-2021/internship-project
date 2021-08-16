@@ -264,3 +264,26 @@ function usersUidExists($conn, $username, $email){
 	}
 	mysqli_stmt_close($stmt);
 }
+function loginRealUser($conn, $username, $pwd){
+	$uidExists = usersUidExists($conn, $username, $username);
+
+	if ($uidExists === false) {
+		header("location: ../login.php?error=wronglogin");
+		exit();
+	}
+
+	$pwdHashed = $uidExists["password"];
+	$checkPwd = password_verify($pwd, $pwdHashed);
+
+	if ($checkPwd === false) {
+		header("location: ../login.php?error=wronglogin");
+		exit();
+	}
+	else if ($checkPwd === true) {
+		
+		$_SESSION["realUserid"] = $uidExists["id"];
+		$_SESSION["username"] = $uidExists["username"];
+		header("location: ../");
+		exit();
+	}
+}
