@@ -23,6 +23,7 @@
 			<input type="text" name="uid" placeholder="Username/Email..." class="inputL"><br>
 			<input type="password" name="pwd" placeholder="Password..." class="inputL"><br>
 			<button type="submit" name="submit" class="signinSignupButton">Log in</button>
+			<a class="forgotPassword" href="sendEmail.php">Forgot Password?</a>
 		<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {

@@ -66,7 +66,7 @@ body {
   width: 100%;
 }
 
-.login-items {
+.login-items, .resetPasswordItems {
   display: flex;
   flex-direction: column;
   max-width: 25%;
@@ -76,7 +76,7 @@ body {
   box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   background-color: var(--fourth-color);
 }
-.inputL {
+.inputL, .sendEmailInput, .passwordField {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 25px;
@@ -110,7 +110,7 @@ body {
   font-size: 15px;
   font-weight: bold;
 }
-.signinSignupButton {
+.signinSignupButton, .resetPasswordButton {
   margin-top: 20px;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -124,7 +124,7 @@ body {
   font-weight: bold;
   cursor: pointer;
 }
-.signinSignupButton:hover {
+.signinSignupButton:hover, .resetPasswordButton:hover {
   background-color: var(--secondary-color);
 }
 .pointer {
@@ -140,6 +140,13 @@ p {
   font-weight: bold;
   font-size: 15px;
 }
+.forgotPassword{
+    color: var(--secondary-color);
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: none;
+    padding-top: 15px;
+}
 
 @media (max-width: 361px) {
   .signup-items {
@@ -152,7 +159,7 @@ p {
     padding: 40px;
     box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   }
-  .login-items {
+  .login-items, .resetPasswordItems, .resetPasswordItems {
     clear: both;
     display: flex;
     flex-direction: column;
@@ -175,7 +182,7 @@ p {
     padding: 40px;
     box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   }
-  .login-items {
+  .login-items, .resetPasswordItems, .resetPasswordItems {
     clear: both;
     display: flex;
     flex-direction: column;
@@ -198,7 +205,7 @@ p {
     padding: 40px;
     box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   }
-  .login-items {
+  .login-items, .resetPasswordItems, .resetPasswordItems {
     clear: both;
     display: flex;
     flex-direction: column;
@@ -221,7 +228,7 @@ p {
     padding: 40px;
     box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   }
-  .login-items {
+  .login-items, .resetPasswordItems, .resetPasswordItems {
     clear: both;
     display: flex;
     flex-direction: column;
@@ -240,7 +247,7 @@ p {
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
 }
-.login {
+.login, .resetPassword {
   clear: both;
   color: var(--first-color);
   text-align: center;
