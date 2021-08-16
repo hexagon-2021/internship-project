@@ -1,11 +1,23 @@
 @import url("https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&display=swap');
+
+@font-face {
+  font-family: 'Roboto';
+  src: url('roboto.eot'); /* IE9 Compat Modes */
+  src: url('roboto.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('roboto.woff') format('woff'), /* Modern Browsers */
+  url('roboto.ttf')  format('truetype'), /* Safari, Android, iOS */
+  url('roboto.svg#svgFontName') format('svg'); /* Legacy iOS */
+}
 
 body {
   background-color: var(--fourth-color);
 }
-
+*{
+  font-family: 'Atkinson Hyperlegible', sans-serif ;
+}
 :root {
   --first-color: #eba83a;
   --secondary-color: #bb371a;
@@ -72,8 +84,9 @@ body {
   max-width: 25%;
   margin: 0 auto;
   border: solid var(--first-color) 1px;
+  border-radius: 0.7rem;
   padding: 80px;
-  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
+  box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2); 
   background-color: var(--fourth-color);
 }
 .inputL, .sendEmailInput, .passwordField {
@@ -119,7 +132,7 @@ body {
   border-radius: 0.7rem;
   /* box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2); */
   color: white;
-  /*font-family: Arial, Helvetica, sans-serif;*/
+  
   font-size: 20px;
   font-weight: bold;
   cursor: pointer;
@@ -166,6 +179,7 @@ p {
     max-width: 80%;
     margin: 0 auto;
     border: solid var(--first-color) 1px;
+    border-radius: 0.7rem;
     padding: 40px;
     box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
     background-color: var(--fourth-color);
@@ -235,6 +249,7 @@ p {
     max-width: 40%;
     margin: 0 auto;
     border: solid var(--first-color) 1px;
+    border-radius: 0.7rem;
     padding: 40px;
     box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
     background-color: var(--fourth-color);
@@ -245,14 +260,13 @@ p {
   color: var(--first-color);
   text-align: center;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
 }
 .login, .resetPassword {
   clear: both;
   color: var(--first-color);
   text-align: center;
   font-weight: bold;
-  font-family: Arial, Helvetica, sans-serif;
+
 }
 .dontHaveAnAcc {
   display: flex;
@@ -260,6 +274,7 @@ p {
   max-width: 25%;
   margin: 15px auto;
   border: solid var(--first-color) 1px;
+  border-radius: 0.7rem;
   padding: 40px;
   box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   background-color: var(--fourth-color);
@@ -268,14 +283,14 @@ p {
 .dontHaveAnAcc a {
   font-weight: bold;
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  
   color: var(--secondary-color);
   text-decoration: none;
 }
 .dontHaveAnAcc h1 {
   font-weight: bold;
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  
   color: var(--first-color);
 }
 
@@ -285,6 +300,7 @@ p {
   max-width: 25%;
   margin: 15px auto;
   border: solid var(--first-color) 1px;
+  border-radius: 0.7rem;
   padding: 40px;
   box-shadow: 12px 12px 10px 1px rgba(0, 0, 255, 0.2);
   background-color: var(--fourth-color);
@@ -293,14 +309,14 @@ p {
 .haveanAcc a {
   font-weight: bold;
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  
   color: var(--secondary-color);
   text-decoration: none;
 }
 .haveanAcc h1 {
   font-weight: bold;
   font-size: 20px;
-  font-family: Arial, Helvetica, sans-serif;
+  
   color: var(--first-color);
 }
 
