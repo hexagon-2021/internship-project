@@ -42,7 +42,6 @@ if (isset($_POST["submit"])) {
 	}
 	
 	if( 
-        ctype_alnum($pwd) // numbers & digits only 
         && strlen($pwd)>6 // at least 7 chars 
         && strlen($pwd)<21 // at most 20 chars 
         && preg_match('`[A-Z]`',$pwd) // at least one upper case 
