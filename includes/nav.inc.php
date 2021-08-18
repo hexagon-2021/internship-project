@@ -38,7 +38,7 @@
           array_push($i_class, "sign-in-alt");
         } else {
           array_push($list, "Rreth Nesh", "Kontakto", "Log In");
-          array_push($links, "/internship-project/about.php", "/internship-project/contact.php", "/internship-project/login.php");
+          array_push($links, "/internship-project/about.php", "/internship-project/contact.php", "/internship-project/users/login.php");
           array_push($i_class, "users", "address-book", "sign-in-alt");
         }
         foreach ($list as $i=>$categorie) {
