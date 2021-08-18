@@ -48,7 +48,7 @@ function uidExists($conn, $username, $email){
 	$sql = "SELECT * FROM business WHERE username = ? OR email = ?;";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../signupForm.php?error=stmtfailed");
+		header("location: ../users/index.php?error=stmtfailed");
 		exit();
 	}
 
@@ -71,7 +71,7 @@ function companyNameExists($conn, $companyName){
 	$sql = "SELECT * FROM business WHERE company_name = ? ;";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../signupForm.php?error=companyNameExists");
+		header("location: ../users/index.php?error=companyNameExists");
 		exit();
 	}
 
@@ -93,7 +93,7 @@ function createUser($conn, $name, $email, $username, $pwd, $companyName, $compan
 	$sql = "INSERT INTO business (  username, password ,email,company_name, company_city, phone_number, name, document_name, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql)) {
-		header("location: ../signupForm.php?error=stmtfailed");
+		header("location: ../users/index.php?error=stmtfailed");
 		exit();
 	}
 
@@ -102,7 +102,7 @@ function createUser($conn, $name, $email, $username, $pwd, $companyName, $compan
 	mysqli_stmt_bind_param($stmt, "sssssssss", $username,$hashedPwd,$email, $companyName,    $companyCity, $phone_number,$name, $document_name, $status);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../signupForm.php?error=none");
+	header("location: ../users/index.php?error=none");
 		exit();
 }
 
@@ -125,15 +125,15 @@ function check_upload_image($file) {
 				$file_destination = 'proofs/'.$file_name_new;
 				move_uploaded_file($file_tmp_name, $file_destination);
 			} else {
-				header("Location: ../signupForm.php?docfs");
+				header("Location: ../users/index.php?docfs");
 				exit();
 			}
 		} else {
-			header("Location: ../signupForm.php?docerr");
+			header("Location: ../users/index.php?docerr");
 			exit();
 		}
 	} else {
-		header("Location: ../signupForm.php?docft");
+		header("Location: ../users/index.php?docft");
 		exit();
 	}
 
@@ -156,7 +156,7 @@ function loginUser($conn, $username, $pwd){
 	$uidExists = uidExists($conn, $username, $username);
 
 	if ($uidExists === false) {
-		header("location: ../login.php?error=wronglogin");
+		header("location: ../users/index.php?error=wronglogin");
 		exit();
 	}
 
@@ -164,7 +164,7 @@ function loginUser($conn, $username, $pwd){
 	$checkPwd = password_verify($pwd, $pwdHashed);
 
 	if ($checkPwd === false) {
-		header("location: ../login.php?error=wronglogin");
+		header("location: ../users/index.php?error=wronglogin");
 		exit();
 	}
 	else if ($checkPwd === true) {
@@ -220,7 +220,7 @@ function createUsers($conn, $name, $email, $username, $pwd, $phone_number){
 	$sql2 = "INSERT INTO users (  username, password ,email, phone_number, full_name) VALUES (?, ?, ?, ?, ?);";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql2)) {
-		header("location: ../users/view.php?error=stmtfailed");
+		header("location: ../users/index.php?error=stmtfailed");
 		exit();
 	}
 
@@ -229,7 +229,7 @@ function createUsers($conn, $name, $email, $username, $pwd, $phone_number){
 	mysqli_stmt_bind_param($stmt, "sssss", $username,$hashedPwd,$email,$phone_number,$name);
 	mysqli_stmt_execute($stmt);
 	mysqli_stmt_close($stmt);
-	header("location: ../users/view.php?error=none");
+	header("location: ../users/index.php?error=none");
 		exit();
 }
 function emptyInputSignupUsers($name, $email, $username, $pwd, $pwdRepeat,  $phone_number){
@@ -246,7 +246,7 @@ function usersUidExists($conn, $username, $email){
 	$sql2 = "SELECT * FROM users WHERE username = ? OR email = ?;";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql2)) {
-		header("location: view.php?error=stmtfailed");
+		header("location: index.php?error=stmtfailed");
 		exit();
 	}
 
