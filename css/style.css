@@ -1584,3 +1584,36 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
     border-radius: 0.7rem;
   }
 }
+
+.modal-header{
+  color: var(--secondary-color);
+}
+.modal-content{
+  background-color:  var(--fourth-color) !important;
+}
+#registerBu , #registerUi , #haveanAccUsrers , #haveanAccBusiness{
+  display:none;
+}
+.ndrroRegjistriminBtn{
+
+   display: inline-block;
+  font-size: 1.5rem;
+  width: 49%;
+  border-radius: 0.3rem;
+  padding: 15px;
+  margin: 30px auto;
+  background: var(--first-color);
+  border: 2px solid var(--secondary-color);
+  font-weight: bold;
+  color: var(--secondary-color);
+  cursor: pointer;
+  transition: 300ms;
+}
+.ndrroRegjistriminBtn:hover{
+   background: var(--secondary-color);
+  color: var(--first-color);
+}
+
+#loginBu , #loginUi , #dontHaveAnAccBu , #dontHaveAnAccUi{
+  display:none;
+}
