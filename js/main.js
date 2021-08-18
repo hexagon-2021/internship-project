@@ -82,3 +82,49 @@ function setCookie(cname, cvalue, exdays) {
   let expires = "expires="+ d.toUTCString();
   document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
+var edit1 = 0;
+$(document).on('click', "#userRegister", function() {
+  var btn1 = $("#userRegister").val();
+  if (btn1 == "Regjistrohu Si Biznes" ) {
+  $("#registerUi").hide();
+  $("#haveanAccUsrers").hide();
+  $("#registerBu").toggle();
+  $("#haveanAccBusiness").toggle();
+    $(this).val("Regjistrohu Si Klient");
+    $(this).html("Regjistrohu Si Klient");
+    console.log(btn1);
+  }
+  else{
+  $("#registerUi").toggle();
+  $("#haveanAccUsrers").toggle();
+  $("#haveanAccBusiness").hide();
+  $("#registerBu").hide();
+    $(this).val("Regjistrohu Si Biznes");
+    $(this).html("Regjistrohu Si Biznes");
+    console.log(btn1);
+  }
+  console.log(btn1);
+});
+
+$(document).on('click', "#userLogin", function() {
+  var btn1 = $("#userLogin").val();
+  if (btn1 == "Kyqu Si Klient" ) {
+  $("#loginUi").hide();
+  $("#dontHaveAnAccUi").hide();
+  $("#loginBu").toggle();
+  $("#dontHaveAnAccBu").toggle();
+    $(this).val("Kyqu Si Biznes");
+    $(this).html("Kyqu Si Biznes");
+    console.log(btn1);
+  }
+  else{
+  $("#loginUi").toggle();
+  $("#dontHaveAnAccUi").toggle();
+  $("#loginBu").hide();
+  $("#dontHaveAnAccBu").hide();
+    $(this).val("Kyqu Si Klient");
+    $(this).html("Kyqu Si Klient");
+    console.log(btn1);
+  }
+  console.log(btn1);
+});
