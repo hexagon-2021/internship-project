@@ -54,6 +54,6 @@ if (isset($_POST["submit"])) {
 	createUsers($conn, $name, $email, $username, $pwd,  $phone_number);
 }
 else{
-	header("location:view.php");
+	header("location:login.php");
 	exit();
 }
