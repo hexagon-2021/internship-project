@@ -17,13 +17,13 @@ require_once('session.php');
 		}
 		
 		if (emptyInputLogin($username, $pwd) !== false) {
-			header("location: ../login.php?error=emptyinput");
+			header("location: ../users/login.php?error=emptyinput");
 			exit();
 		}
 
 		loginUser($conn, $username, $pwd);
 	}
 	else{
-		header("location: ../login.php");
+		header("location: ../users/login.php");
 		exit();
 	}
