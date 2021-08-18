@@ -17,27 +17,27 @@ if (isset($_POST["submit"])) {
 	$file = $_FILES['document'];
 
 	if (emptyInputSignup($name, $email, $pwd, $pwdRepeat, $companyName, $companyCity, $phone_number, $username) !== false) {
-		header("location: ../signupForm.php?error=emptyinput");
+		header("location: ../users/index.php?error=emptyinput");
 		exit();
 	}
 	if (invalidUid($username) !== false) {
-		header("location: ../signupForm.php?error=invaliduid");
+		header("location: ../users/index.php?error=invaliduid");
 		exit();
 	}
 	if (invalidEmail($email) !== false) {
-		header("location: ../signupForm.php?error=invalidemail");
+		header("location: ../users/index.php?error=invalidemail");
 		exit();
 	}
 	if (pwdMatch($pwd,$pwdRepeat) !== false ){
-		header("location: ../signupForm.php?error=passwordsdontmatch");
+		header("location: ../users/index.php?error=passwordsdontmatch");
 		exit();
 	}
 	if (uidExists($conn, $username, $email) !== false) {
-		header("location: ../signupForm.php?error=usernametaken");
+		header("location: ../users/index.php?error=usernametaken");
 		exit();
 	}
 	if (companyNameExists($conn, $companyName) !== false ){
-		header("location: ../signupForm.php?error=companyNameExists");
+		header("location: ../users/index.php?error=companyNameExists");
 		exit();
 	}
 	
@@ -52,7 +52,7 @@ if (isset($_POST["submit"])) {
 		
 			// echo "bravo";
 	}else{
-		header("location: ../signupForm.php?error=FjalkalimiDuhetTiKetSëPaku8Karaktere");
+		header("location: ../users/index.php?error=FjalkalimiDuhetTiKetSëPaku8Karaktere");
 		exit();
 	}
 
@@ -60,6 +60,6 @@ if (isset($_POST["submit"])) {
 	createUser($conn, $name, $email, $username, $pwd, $companyName, $companyCity, $phone_number, $document_name);
 }
 else{
-	header("location: ../signupForm.php");
+	header("location: ../users/index.php");
 	exit();
 }
