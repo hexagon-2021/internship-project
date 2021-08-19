@@ -80,19 +80,27 @@ ALTER TABLE `business` ADD `status` VARCHAR(256) NOT NULL AFTER `document_name`;
 
 CREATE TABLE `cart` (
   `id` int(11) NOT NULL,
-  `ip` varchar(15) NOT NULL,
+  `business_id` int(11) NOT NULL,
+  `user_id` int(15) NOT NULL,
   `products` varchar(256) NOT NULL,
-  `quantities` int(11) NOT NULL,
-  `date` datetime NOT NULL
+  `quantities` varchar(256) NOT NULL,
+  `date` datetime NOT NULL,
+  `status` varchar(64) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- Indexes for table `cart`
 ALTER TABLE `cart`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `user_id` (`user_id`);
 
 -- AUTO_INCREMENT for table `cart`
 ALTER TABLE `cart`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  
+  --Constraints for table `cart`
+--
+ALTER TABLE `cart`
+  ADD CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
   
   CREATE TABLE `users` (
   `id` int(11) NOT NULL,
