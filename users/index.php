@@ -29,8 +29,8 @@
 			<input type="text" name="name" placeholder="Emri i plot..." class="input">
 			<input type="text" name="email" placeholder="Email..." class="input">
 			<input type="text" name="username" placeholder="Emri..." class="input">
-			<input type="password" name="pwd" placeholder="Fjalkalimi..." class="input">
-			<input type="password" name="pwdRepeat" placeholder="Perserit fjalkalimin..." class="input">
+			<input type="password" name="pwd" placeholder="Fjalekalimi..." class="input">
+			<input type="password" name="pwdRepeat" placeholder="Perserit fjalekalimin..." class="input">
 			<input type="text" name="phone_number" placeholder="Numri i telefonit..." class="input">
 			<button type="submit" name="submit" class="pointer signinSignupButton">Regjistrohu</button>
 			<?php
@@ -57,7 +57,7 @@
 						echo "<p>Ju jeni regjistruar!</p>";
 					} 
 					else if ($_GET['error'] == "FjalkalimiDuhetTiKetSëPaku8Karaktere") {
-						echo "<p>Fjalkalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
+						echo "<p>Fjalekalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
 					}
 				}
 			?>
@@ -76,8 +76,8 @@
 			<input type="text" name="name" placeholder="Emri i plot..." class="input">
 			<input type="text" name="email" placeholder="Email..." class="input">
 			<input type="text" name="username" placeholder="Emri..." class="input">
-			<input type="password" name="pwd" placeholder="Fjalkalimi..." class="input">
-			<input type="password" name="pwdRepeat" placeholder="Perserit fjalkalimin..." class="input">
+			<input type="password" name="pwd" placeholder="Fjalekalimi..." class="input">
+			<input type="password" name="pwdRepeat" placeholder="Perserit fjalekalimin..." class="input">
 			<input type="text" name="companyName" placeholder="Emri i kompanis..." class="input">
 			<input type="text" name="companyCity" placeholder="Qyteti i kompanis..." class="input">
 			<input type="text" name="phone_number" placeholder="Numri i telefonit..." class="input">
@@ -120,7 +120,7 @@
 						echo "<p>Ky lloj i file-it nuk eshte i suportuar!</p>";
 					}
 					else if ($_GET['error'] == "FjalkalimiDuhetTiKetSëPaku8Karaktere") {
-						echo "<p>Fjalkalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
+						echo "<p>Fjalekalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
 					}
 				}
 			?>
