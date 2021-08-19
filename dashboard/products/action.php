@@ -95,7 +95,7 @@
             echo "<h1 class='errorMessageCrudProducts'>Something went wrong. Try again!</h1>";
         }
     }else{
-        $limit = 1;
+        $limit = 5;
 
 	    if (isset($_POST['page_no'])) {
 	        $page_no = $_POST['page_no'];

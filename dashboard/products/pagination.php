@@ -4,7 +4,7 @@ require_once("../../includes/functions.inc.php");
 require_once("../../includes/session.php"); ?>
 <link rel="stylesheet" type="text/css" href="../css/style.css" /> 
 <?php
-    $limit = 1;
+    $limit = 5;
 
     if (isset($_POST['page_no'])) {
         $page_no = $_POST['page_no'];
