@@ -14,7 +14,7 @@
         <select name="fetchval" id="fetchval">
           <?php 
           echo "<option>All Companies</option>";
-          $item_categorie_options = ["Meat", "Salad", "Pizza", "Pasta"];
+          $item_categorie_options = ["Salad", "Fast Food", "Pizza", "Pasta", "Meat" , "Rice" , "Noodles" , "Fish" , "Eggs" , "Desert" , "Fruit", "Vegetables" , "Traditional"];
             if (mysqli_num_rows($stmt) > 0) {
               $companyName = $res['company_name'];
               foreach ($stmt as $resu){

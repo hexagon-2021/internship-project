@@ -1,7 +1,7 @@
 <?php require_once("../../includes/dbh.inc.php") ?>
 <?php require_once("../../includes/functions.inc.php") ?>
 <?php require_once("../../includes/session.php") ?>
-<?php $food_categories = ["Salad", "Pizza", "Pasta", "Meat" , "Rice" , "Noodles" , "Fish" , "Eggs" , "Cake" , "Fruit", "Vegetables" , "Traditional"]; ?>
+<?php $food_categories = ["Salad", "Fast Food", "Pizza", "Pasta", "Meat" , "Rice" , "Noodles" , "Fish" , "Eggs" , "Desert" , "Fruit", "Vegetables" , "Traditional"]; ?>
 <body >
 <section class="dashboard_categorie" id="products">
   <div class="container">
@@ -61,9 +61,9 @@
           success:function(response){
             $("#result").html(response);
             $("#add-form")[0].reset();
-            setTimeout(function(){
+            /*setTimeout(function(){
               $("#result").fadeOut("slow");
-            }, 3000);
+            }, 3000);*/
             
           },
           error:function(response){
@@ -119,9 +119,9 @@
 		success:function(response){
 			viewData();
 			$("#result").html(response);
-			setTimeout(function(){
-              $("#result").fadeOut("slow");
-            }, 3000);
+			/*setTimeout(function(){
+              $("#result").html("slow");
+            }, 500000000);*/
 		}
 	});
   	}
@@ -134,9 +134,9 @@
 			data: "id="+id,
 			success: function(data){
 				viewData();
-				setTimeout(function(){
+				/*setTimeout(function(){
               	$("#result").fadeOut("slow");
-            	}, 3000);
+            	}, 3000);*/
 			}
 		})
 	}	

@@ -126,7 +126,7 @@
                     echo "<tr>";
                         echo "<th>".$company_name."</th>";
                         echo "<th>". $row['item_name'] ."</th>";
-                        echo "<th>". $row['item_price'] ."</th>";
+                        echo "<th>". $row['item_price'] ."€</th>";
                         echo "<th>". $row['item_ingridients'] ."</th>";
                         echo "<th>". $row['item_categorie'] ."</th>";
                         echo "<th>". $row['item_views'] ."</th>";
@@ -211,7 +211,7 @@
                 echo "<tr>";
                     echo "<th>".$company_name."</th>";
                     echo "<th>". $row['item_name'] ."</th>";
-                    echo "<th>". $row['item_price'] ."</th>";
+                    echo "<th>". $row['item_price'] . '€'."</th>";
                     echo "<th>". $row['item_ingridients'] ."</th>";
                     echo "<th>". $row['item_categorie'] ."</th>";
                     echo "<th>". $row['item_views'] ."</th>";
