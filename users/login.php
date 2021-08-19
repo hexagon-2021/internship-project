@@ -5,6 +5,9 @@
 	if(isset($_SESSION['userid'])){
 		header('location: dashboard');
 	}
+	if(isset($_SESSION['realUserid'])){
+		header('location: ../');
+	}
 	?>
 
 <!DOCTYPE html>
