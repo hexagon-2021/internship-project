@@ -246,7 +246,7 @@ function usersUidExists($conn, $username, $email){
 	$sql2 = "SELECT * FROM users WHERE username = ? OR email = ?;";
 	$stmt = mysqli_stmt_init($conn);
 	if (!mysqli_stmt_prepare($stmt, $sql2)) {
-		header("location: index.php?error=stmtfailed");
+		header("location: ../users/index.php?error=stmtfailed");
 		exit();
 	}
 
@@ -268,7 +268,7 @@ function loginRealUser($conn, $username, $pwd){
 	$uidExists = usersUidExists($conn, $username, $username);
 
 	if ($uidExists === false) {
-		header("location: ../login.php?error=wronglogin");
+		header("location: ../users/login.php?error=wronglogin");
 		exit();
 	}
 
@@ -276,7 +276,7 @@ function loginRealUser($conn, $username, $pwd){
 	$checkPwd = password_verify($pwd, $pwdHashed);
 
 	if ($checkPwd === false) {
-		header("location: ../login.php?error=wronglogin");
+		header("location: ../users/login.php?error=wronglogin");
 		exit();
 	}
 	else if ($checkPwd === true) {
@@ -287,3 +287,4 @@ function loginRealUser($conn, $username, $pwd){
 		exit();
 	}
 }
+
