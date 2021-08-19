@@ -22,7 +22,7 @@
 
 	<div class="formChange" id="formChange-div">
 	
-		<form action="../users/login.logic.php" method="post" id="loginUi" style="display: block;">
+		<form action="../includes/login.inc.php" method="post" id="loginUi" style="display: block;">
 
 			<div class="login-items">
 				<h1 class="login">Kyqja per Biznes</h1>
@@ -49,7 +49,7 @@
 
 	
 
-		<form action="../includes/login.inc.php" method="post" id="loginBu">
+		<form action="login.logic.php" method="post" id="loginBu">
 
 			<div class="login-items">
 				<h1 class="login">Kyqja per Klient</h1>
