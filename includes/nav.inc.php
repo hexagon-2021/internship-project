@@ -15,7 +15,7 @@
           array_push($links, '/internship-project/');
           array_push($i_class, "home");
         }
-        if (isset($_SESSION['userid'])) {
+        if (isset($_SESSION['userid']) || (isset($_SESSION['realUserid']))) {
           array_push($list, "Rreth Nesh");
           array_push($links, "/internship-project/about.php");
           array_push($i_class, "users");
