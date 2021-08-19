@@ -34,7 +34,7 @@
 			$query2 = mysqli_query($conn,$sql2);
 			while ($row2 = mysqli_fetch_assoc($query2)) {
 				echo "<tr>";
-					echo "<td><img style=' width: 100px !important 'class='card-img-top' src='../dashboard/products/uploads/". $row2['item_picture'] ."'></td>";
+					echo "<td><img style=' width: 100px !important; height: 100px; 'class='card-img-top' src='../dashboard/products/uploads/". $row2['item_picture'] ."'></td>";
 					echo "<td><p class='card-text'> ". $row2['item_name'] ."</p></td>";
 					echo "<td><p class='card-text'>Cmimi Total : ". $row2['item_price'] . "€</p></td>";
 					echo "<td><p>Sasia: ". explode(", ", $row['quantities'])[$i] ."</p></td>";
