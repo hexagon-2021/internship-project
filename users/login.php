@@ -31,8 +31,8 @@
 				<h1 class="login">Kyqja per Biznes</h1>
 			<input type="text" name="uid" placeholder="Username/Email..." class="inputL"><br>
 			<input type="password" name="pwd" placeholder="Password..." class="inputL"><br>
-			<button type="submit" name="submit" class="signinSignupButton">Log in</button>
-			<a class="forgotPassword" href="../sendEmail.php">Forgot Password?</a>
+			<button type="submit" name="submit" class="signinSignupButton">Kyqu</button>
+			<a class="forgotPassword" href="../sendEmail.php">Keni harruar fjalkalimin?</a>
 		<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {
@@ -47,7 +47,7 @@
 		</div>
 		</form>
 		<div class="dontHaveAnAcc" id="dontHaveAnAccUi" style="display: block;">
-			<h1>Don't have an account? <a href="index.php">Sign up</a></h1>
+			<h1>Nuk keni llogari? <a href="index.php">Regjistrohu</a></h1>
 		</div>
 
 	
@@ -58,8 +58,8 @@
 				<h1 class="login">Kyqja per Klient</h1>
 			<input type="text" name="uid" placeholder="Username/Email..." class="inputL"><br>
 			<input type="password" name="pwd" placeholder="Password..." class="inputL"><br>
-			<button type="submit" name="submit" class="signinSignupButton">Log in</button>
-			<a class="forgotPassword" href="../sendEmailUser.php">Forgot Password?</a>
+			<button type="submit" name="submit" class="signinSignupButton">Kyqu</button>
+			<a class="forgotPassword" href="../sendEmailUser.php">Keni harruar fjalkalimin?</a>
 		<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {
@@ -74,7 +74,7 @@
 		</div>
 		</form>
 		<div class="dontHaveAnAcc" id="dontHaveAnAccBu">
-			<h1>Don't have an account? <a href="index.php">Sign up</a></h1>
+			<h1>Nuk keni llogari? <a href="index.php">Regjistrohu</a></h1>
 		</div>
 	
 	</div>
