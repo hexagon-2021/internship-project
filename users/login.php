@@ -29,8 +29,8 @@
 
 			<div class="login-items">
 				<h1 class="login">Kyqja per Biznes</h1>
-			<input type="text" name="uid" placeholder="Username/Email..." class="inputL"><br>
-			<input type="password" name="pwd" placeholder="Password..." class="inputL"><br>
+			<input type="text" name="uid" placeholder="Emri/Email..." class="inputL"><br>
+			<input type="password" name="pwd" placeholder="Fjalekalimi..." class="inputL"><br>
 			<button type="submit" name="submit" class="signinSignupButton">Kyqu</button>
 			<a class="forgotPassword" href="../sendEmail.php">Keni harruar fjalkalimin?</a>
 		<?php
@@ -59,7 +59,7 @@
 			<input type="text" name="uid" placeholder="Username/Email..." class="inputL"><br>
 			<input type="password" name="pwd" placeholder="Password..." class="inputL"><br>
 			<button type="submit" name="submit" class="signinSignupButton">Kyqu</button>
-			<a class="forgotPassword" href="../sendEmailUser.php">Keni harruar fjalkalimin?</a>
+			<a class="forgotPassword" href="../sendEmailUser.php">Keni harruar fjalekalimin?</a>
 		<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {
