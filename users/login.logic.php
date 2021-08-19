@@ -2,7 +2,7 @@
 require_once('../includes/functions.inc.php');
 require_once('../includes/session.php');
 	if(isset($_SESSION['realUserid'])){
-		header('location: ../dashboard');
+		header('location: ../');
 	}
 	if (isset($_POST["submit"])) {
 	
@@ -17,13 +17,13 @@ require_once('../includes/session.php');
 		}
 		
 		if (emptyInputLogin($username, $pwd) !== false) {
-			header("location: ../login.php?error=emptyinput");
+			header("location: login.php?error=emptyinput");
 			exit();
 		}
 
-		loginUser($conn, $username, $pwd);
+		loginRealUser($conn, $username, $pwd);
 	}
 	else{
-		header("location: ../login.php");
+		header("location: login.php");
 		exit();
 	}
