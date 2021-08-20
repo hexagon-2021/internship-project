@@ -30,4 +30,3 @@
     }
   }
   mysqli_query($conn, "UPDATE cart SET products='$products', quantities='$quantities' WHERE id='$cart_id'; ");
-  echo count(explode(", ", $quantities));

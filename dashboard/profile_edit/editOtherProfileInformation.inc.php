@@ -25,14 +25,14 @@
         }else{
             if(!empty($_FILES["image"]["name"])){
                 $sql = "UPDATE business
-                    SET name='$name', email='$email', company_name='$company_name', company_city='$company_city', company_logo='$image', phone_number='$phone_number'
+                    SET username='$username', name='$name', email='$email', company_name='$company_name', company_city='$company_city', company_logo='$image', phone_number='$phone_number'
                     WHERE id = '$idFromURL'";
-                }else{
-                    $sql = "UPDATE `business`
-                    SET username='$username', name='$name', email='$email', company_name='$company_name', company_city='$company_city', phone_number='$phone_number'
-                    WHERE id = '$idFromURL'";
-                }
-            $Execute = mysqli_query($conn, $sql);
+            }else{
+                $sql = "UPDATE business
+                SET username='$username', name='$name', email='$email', company_name='$company_name', company_city='$company_city', phone_number='$phone_number'
+                WHERE id = '$idFromURL'";
+            }
+            
             
             if($Execute){
                 move_uploaded_file($_FILES["image"]["tmp_name"], $target);

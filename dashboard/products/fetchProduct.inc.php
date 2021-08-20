@@ -37,7 +37,7 @@
                 <th>
                     <select name="view_product_edit_product_categorie" class="view_product_edit_component">
                         <?php
-                            $food_categories = ["Salad", "Pizza", "Pasta", "Meat" , "Rice" , "Noodles" , "Fish" , "Eggs" , "Cake" , "Fruit", "Vegetables" , "Traditional"]; 
+                            $food_categories = ["Salad", "Fast Food", "Pizza", "Pasta", "Meat" , "Rice" , "Noodles" , "Fish" , "Eggs" , "Desert" , "Fruit", "Vegetables" , "Traditional"]; 
                             $temporary_categorie = "$itemCategorie";
                             echo "<option value='$temporary_categorie'>$temporary_categorie</option>";
                             foreach ($food_categories as $food_categorie) {

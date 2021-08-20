@@ -144,7 +144,7 @@
                              <img width="70" height="70"  src="products/uploads/<?php echo htmlentities($image) ?>" alt="item_picture" />
                         </th>
                         <th><input type="text" name="item_ingridients" id="item_ingridients-<?php echo $row['id']; ?>"  name="view_product_edit_product_ingridients" class="view_product_edit_component" value="<?php echo htmlentities($itemIngredients) ?>" /></th>
-                        <th><input type="number" name="item_price" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
+                        <th><input style="width: 75%;" type="number" name="item_price" id="item_price-<?php echo $row['id']; ?>" step=".01" style="width: 80%;" name="view_product_edit_product_price" class="view_product_edit_component" value="<?php echo htmlentities($itemPrice) ?>" /> €</th>
                         <th>
                             <select name="item_categorie" id="item_categorie-<?php echo $row['id']; ?>" name="view_product_edit_product_categorie" class="view_product_edit_component">
                                 <?php
