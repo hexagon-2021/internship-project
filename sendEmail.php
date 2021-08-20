@@ -14,10 +14,8 @@
             header("location: sendEmail.php");
         }else{
             $query = "SELECT * FROM `business` WHERE email='".$email."'";
-            var_dump($query);
             $results = mysqli_query($conn, $query);
             $row = mysqli_num_rows($results);
-            var_dump($row);
             if ($row==0){
                 $_SESSION["errorMessage"] = "No user is registered with this email address!";
                 header("location: sendEmail.php");

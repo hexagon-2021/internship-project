@@ -5,7 +5,7 @@
 <table class="approved_businesses_table">
   <?php 
     $user_id=$_SESSION['userid'];
-    $sql = "SELECT * FROM inbox WHERE receiver_id = $user_id";
+    $sql = "SELECT * FROM inbox WHERE receiver_id = $user_id ORDER BY id DESC";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
   ?>
