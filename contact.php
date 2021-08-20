@@ -71,6 +71,11 @@
 	</style>
 </head>
 <body>
+	<?php 
+		include 'includes/dbh.inc.php';
+		// include 'includes/session.php';
+		// include 'includes/functions.inc.php';
+	?>
 	<?php $active = "Kontakto"; include 'includes/session.php'; include 'includes/nav.inc.php'; ?>
 	<div style="clear: both;">
 		<form method="POST" action="includes/contact.inc.php">
