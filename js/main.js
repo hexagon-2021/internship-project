@@ -12,8 +12,12 @@ $(window).on("resize", function() {
   }
 });
 
-$("#navbar > div > i").click(function() {
+$("#navbar > div > i.bar_icon").click(function() {
   $("#navbar > .container > ul").toggle(300);
+});
+
+$("#navbar > div > i.shopping_cart").click(function() {
+  window.location.href = '/internship-project/users/view_products.php';
 });
 
 var add_product_toggler_text = 0;
@@ -71,9 +75,16 @@ $(document).on('click', "#edit_password_toggler", function() {
 $(".cities_to_select > button.city_selectable").click(function() {
   let el = $(this)[0];
   let city = this.innerHTML.substring(18);
-
-  setCookie('city', city, .2);
-  window.location.href = 'view_products/index.php';
+  $.ajax({
+    method: "POST",
+    url: "start_new_cart.php",
+    success: function(data) {
+      // $("#navbar > div > i.shopping_cart > label").html(data - 1);
+      // alert(data);
+      setCookie('city', city, .2);
+      window.location.href = 'view_products/index.php';
+    }
+  })
 });
 
 function setCookie(cname, cvalue, exdays) {
@@ -115,7 +126,6 @@ $(document).on('click', "#userLogin", function() {
   $("#dontHaveAnAccBu").toggle();
     $(this).val("Kyqu Si Biznes");
     $(this).html("Kyqu Si Biznes");
-    console.log(btn1);
   }
   else{
   $("#loginUi").toggle();
@@ -124,7 +134,29 @@ $(document).on('click', "#userLogin", function() {
   $("#dontHaveAnAccBu").hide();
     $(this).val("Kyqu Si Klient");
     $(this).html("Kyqu Si Klient");
-    console.log(btn1);
   }
-  console.log(btn1);
 });
+
+$("button.add_to_cart_btn").click(function() {
+  let id = this.id.split("_")[1];
+  $(this).attr({
+    'disabled': true,
+    'title': 'Produkti tashme eshte ne shporte',
+  });
+  // background-color: var(--first-color);color: var(--secondary-color);
+  $(this).css({
+    background: 'var(--first-color)',
+    color: 'var(--secondary-color)'
+  });
+  $.ajax({
+    method: "POST",
+    url: "add_to_cart.php", 
+    data: {
+      id: id
+    }, 
+    success: function(data) {
+      $("#navbar > div > i.shopping_cart > label").html(data - 1);
+      // alert(data);
+    }
+  })
+})

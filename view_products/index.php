@@ -14,7 +14,12 @@
 	 </style>
 </head>
 <body>
-	<?php $active = 'Ballina'; include '../includes/nav.inc.php'; ?>
+	<?php 
+		include '../includes/dbh.inc.php';
+		include '../includes/session.php';
+		include '../includes/functions.inc.php';
+	?>
+	<?php $active = 'Zgjedh Ushqimin'; include '../includes/nav.inc.php'; ?>
 	<?php include 'view.php'; ?>
 
 	 <script src="https://kit.fontawesome.com/7071bdd24d.js" crossorigin="anonymous"></script>

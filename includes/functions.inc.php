@@ -288,3 +288,12 @@ function loginRealUser($conn, $username, $pwd){
 	}
 }
 
+function convert_id($number) {
+	$len = strlen((string)$number);
+	$string_to_return = "";
+	for ($i = 1;$i <= 4 - $len;$i++) {
+		$string_to_return .= "0";
+	}
+	$string_to_return .= $number;
+	return "#" . $string_to_return;
+}

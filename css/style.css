@@ -473,7 +473,32 @@ nav#navbar .container i.bar_icon {
   clear: both;
 }
 
+nav#navbar .container i.shopping_cart {
+  position: absolute;
+  right: 5rem;
+  top: .7rem;
+  background: var(--fourth-color);
+  color: var(--secondary-color);
+  font-size: 1.5rem;
+  border-radius: 0.2rem;
+  padding: 10px 10px 5px;
+  float: right;
+  transition: 300ms;
+  cursor: pointer;
+  clear: both;
+}
+
 nav#navbar .container i.bar_icon:hover {
+  background: var(--secondary-color);
+  color: var(--third-color);
+}
+
+nav#navbar .container i.shopping_cart.active {
+  background: var(--secondary-color);
+  color: var(--fourth-color);
+}
+
+nav#navbar .container i.shopping_cart:hover {
   background: var(--secondary-color);
   color: var(--third-color);
 }
@@ -988,6 +1013,26 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
   color: var(--secondary-color);
 }
 
+.add_to_cart_btn {
+  border-radius: 2px;
+  width: 45%;
+  position: relative;
+  left: 55%;
+  top: -5%;
+  border: none;
+  background: var(--secondary-color);
+  color: var(--first-color);
+  font-size: 16px;
+  padding: 7px 10px;
+  margin-top: -25px;
+  transition: .3s;
+}
+
+.add_to_cart_btn:hover {
+  background: var(--first-color);
+  color: var(--secondary-color);
+}
+
 /* #approved_businesses>div>div.inboxMessageForm {
   display: block !important;
 } */
@@ -1011,9 +1056,9 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
   nav#navbar ul.navbar_ul_items {
     float: right;
     display: inline;
-    width: 60%;
+    width: 82%;
     position: relative;
-    left: 1rem;
+    left: .5rem;
     top: -3rem;
   }
   nav#navbar ul.navbar_ul_items li {
@@ -1101,6 +1146,12 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
   #approved_businesses>div>div.inboxMessageForm select {
     max-width: 50%;
     min-width: 50%;
+  }
+}
+@media (min-width: 1600px) {
+  nav#navbar ul.navbar_ul_items {
+    width: 90%;
+    left: 15rem !important;
   }
 }
 @media (min-width: 1366px) {
@@ -1633,6 +1684,20 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
 #customers tr:nth-child(even){background-color:var(--first-color);}
 /*#customers tr:nth-child(odd){background-color:var(--third-color-color);}*/
 
+#customers td:last-child {
+  text-align: center;
+}
+
+#customers td button.remove_product {
+  font-size: 18px;
+  padding: 10px 10px;
+  text-align: center;
+  border-radius: 50%;
+  border: none;
+  background: var(--secondary-color);
+  color: var(--first-color);
+  cursor: pointer;
+}
 
 #customers th {
   padding-top: 12px;
@@ -1640,4 +1705,31 @@ section.dashboard_categorie.business_inbox button.send_message_form_toggler:hove
   text-align: left;
   background-color: var(--third-color);
   color: var(--first-color);
+}
+
+#customers i {
+  cursor: pointer !important;
+  padding: 5px;
+}
+
+.order_current_order {
+  margin: 20px 0 50px;
+  background-color: var(--secondary-color);
+  border: none;
+  color: var(--fourth-color);
+  width: 300px;
+  padding: 15px 15px 5px;
+  font-size: 20px;
+  cursor: pointer;
+  transition: .3s;
+  border-radius: .3rem !important;
+}
+
+.order_current_order label {
+  cursor: pointer;
+}
+
+.order_current_order:hover {
+  color: var(--secondary-color);
+  background-color: var(--first-color);
 }

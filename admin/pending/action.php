@@ -6,7 +6,7 @@
     $id = (int) $_POST['id'];
     $action = (int) $_POST['action'];
     mysqli_query($conn, "UPDATE business SET status='Active' WHERE id=$id");
-    sendInboxMessage($conn, 1, $id, 'Aprovim', 'Klient i nderuar biznesi juaj eshte aprovuar me sukses', date('Y-m-d'));
+    sendInboxMessage($conn, 6, $id, 'Aprovim', 'Klient i nderuar biznesi juaj eshte aprovuar me sukses', date('Y-m-d'));
   } 
 ?>
 
