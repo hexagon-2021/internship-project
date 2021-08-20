@@ -1,4 +1,4 @@
-<?php require_once("../includes/dbh.inc.php") ?>
+<?php $active = 'Zgjedh Ushqimin'; require_once("../includes/dbh.inc.php"); ?>
 
 <center>
   <form class="view_products_form" method="GET">
@@ -44,17 +44,41 @@
                 
                 // echo "<div class='modal-body'>";
                   echo "<div class='card' >";
-                  echo "<div class='img_card '>";
-                  echo "<a class='productinfo' data-id=". $row2['id'] ." >";
-                  echo "<img class='card-img-top'  src='../dashboard/products/uploads/". $row2['item_picture'] ."'>";
-                  echo "</a>";
-                  echo "</div>";
-                  echo "<p class='card-text'>Emri : ". $row2['item_name'] ."</p>";
-                  // echo "<p class='card-text'>Perbersit : ". $row2['item_ingridients'] ."</p>";
-                  echo "<p class='card-text'>Cmimi : ". $row2['item_price'] . "€</p>";
+                    echo "<div class='img_card '>";
+                      echo "<a class='productinfo' data-id=". $row2['id'] ." >";
+                        echo "<img class='card-img-top'  src='../dashboard/products/uploads/". $row2['item_picture'] ."'>";
+                      echo "</a>";
+                    echo "</div>";
+                    echo "<p class='card-text'>Emri : ". $row2['item_name'] ."</p>";
+                    echo "<p class='card-text'>Cmimi : ". $row2['item_price'] . "€</p>";
+                  
+                  
+                  if (isset($_SESSION['realUserid'])) {
+                    $real_user_id = $_SESSION['realUserid'];
+                    $cart_sql = "SELECT * FROM cart WHERE user_id='$real_user_id' AND status='Duke Porositur'; ";
+                    $cart_result = mysqli_query($conn, $cart_sql);
+                    if (mysqli_num_rows($cart_result) > 0) {
+                      while ($cart = mysqli_fetch_assoc($cart_result)) {
+                        $toPut = true;
+                        foreach (explode(", ", $cart['products']) as $product_id) {
+                          if ($row2['id'] == $product_id) {
+                            echo "<button id='product_". $row2['id'] ."' class='add_to_cart_btn' disabled  style='background: var(--first-color);color: var(--secondary-color);'><i class='fas fa-cart-plus'></i> Shto Në Kartë</button>";
+                            $toPut = false;
+                            break;
+                          } else {
+                            continue;
+                          }
+                        }
+                        if ($toPut) {
+                          echo "<button id='product_". $row2['id'] ."' class='add_to_cart_btn'><i class='fas fa-cart-plus'></i> Shto Në Kartë</button>";
+                        }
+                      }
+                    }
+                  }
                   echo "</div>";
                   echo "<br>";
               } 
+
              echo "</div>"; 
              
         }
@@ -71,17 +95,41 @@
             while ($row3 = mysqli_fetch_assoc($query_run)) {
               echo "<div class='card' >";
                   echo "<div class='img_card '>";
-                 echo "<a class='productinfo' data-id=". $row3['id'] ." >";
-                  echo "<img class='card-img-top'  src='../dashboard/products/uploads/". $row3['item_picture'] ."'>";
-                  echo "</a>";
+                    echo "<a class='productinfo' data-id=". $row3['id'] ." >";
+                      echo "<img class='card-img-top'  src='../dashboard/products/uploads/". $row3['item_picture'] ."'>";
+                    echo "</a>";
                   echo "</div>";
                   echo "<p class='card-text'>Emri : ". $row3['item_name'] ."</p>";
                   // echo "<p class='card-text'>Perbersit : ". $row3['item_ingridients'] ."</p>";
                   echo "<p class='card-text'>Cmimi : ". $row3['item_price'] ."€</p>";
+                  
+                  
+                  if (isset($_SESSION['realUserid'])) {
+                    $real_user_id = $_SESSION['realUserid'];
+                    $cart_sql = "SELECT * FROM cart WHERE user_id='$real_user_id' AND status='Duke Porositur'; ";
+                    $cart_result = mysqli_query($conn, $cart_sql);
+                    if (mysqli_num_rows($cart_result) > 0) {
+                      while ($cart = mysqli_fetch_assoc($cart_result)) {
+                        $toPut = true;
+                        foreach (explode(", ", $cart['products']) as $product_id) {
+                          if ($row3['id'] == $product_id) {
+                            echo "<button id='product_". $row3['id'] ."' class='add_to_cart_btn' disabled  style='background: var(--first-color);color: var(--secondary-color);'><i class='fas fa-cart-plus'></i> Shto Në Kartë</button>";
+                            $toPut = false;
+                            break;
+                          } else {
+                            continue;
+                          }
+                        }
+                        if ($toPut) {
+                          echo "<button id='product_". $row3['id'] ."' class='add_to_cart_btn'><i class='fas fa-cart-plus'></i> Shto Në Kartë</button>";
+                        }
+                      }
+                    }
+                  }
                   echo "</div>";
                   echo "<br>";
             }
-             echo "</div>";
+            echo "</div>";
            }
 
              if (isset($_GET["filtro2"])) {
@@ -102,9 +150,32 @@
                   echo "<p class='card-text'>Emri : ". $row4['item_name'] ."</p>";
                   // echo "<p class='card-text'>Perbersit : ". $row4['item_ingridients'] ."</p>";
                   echo "<p class='card-text'>Cmimi : ". $row4['item_price'] ."€</p>";
+                  
+                  if (isset($_SESSION['realUserid'])) {
+                    $real_user_id = $_SESSION['realUserid'];
+                    $cart_sql = "SELECT * FROM cart WHERE user_id='$real_user_id' AND status='Duke Porositur'; ";
+                    $cart_result = mysqli_query($conn, $cart_sql);
+                    if (mysqli_num_rows($cart_result) > 0) {
+                      while ($cart = mysqli_fetch_assoc($cart_result)) {
+                        $toPut = true;
+                        foreach (explode(", ", $cart['products']) as $product_id) {
+                          if ($row4['id'] == $product_id) {
+                            echo "<button id='product_". $row4['id'] ."' class='add_to_cart_btn' disabled  style='background: var(--first-color);color: var(--secondary-color);'><i class='fas fa-cart-plus'></i> Shto Në Kartë</button>";
+                            $toPut = false;
+                            break;
+                          } else {
+                            continue;
+                          }
+                        }
+                        if ($toPut) {
+                          echo "<button id='product_". $row4['id'] ."' class='add_to_cart_btn'><i class='fas fa-cart-plus'></i> Shto Në Kartë</button>";
+                        }
+                      }
+                    }
+                    
+                }
                   echo "</div>";
                   echo "<br>";
-
             }
              echo "</div>";
              
@@ -130,7 +201,8 @@
                 </div>
         </div>
 
-      
+      <script src="../js/dashboard.js"></script>
+  <!-- <script src="../js/main.js"></script> -->
 <script>
   $(document).ready(function(){
        $('.productinfo').click(function(){

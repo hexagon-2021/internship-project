@@ -14,7 +14,7 @@
     $message = mysqli_real_escape_string($conn, $_POST['message']);
     $subject = mysqli_real_escape_string($conn, $_POST['subject']);
     mysqli_query($conn, "UPDATE business SET status='$status' WHERE id=$id; ");
-    sendInboxMessage($conn, 1, $id, $subject, $message, date('Y-m-d'));
+    sendInboxMessage($conn, 6, $id, $subject, $message, date('Y-m-d'));
   }
 
 if (isset($_POST['request'])) {

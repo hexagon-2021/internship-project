@@ -3,13 +3,13 @@
     <span class="spanFiltro">Filtro në bazë të &nbsp;</span>
     <select name="fetchval" id="fetchval">
       <option value="" disabled="" selected="">Select Filter</option>
-      <option value="Prishtinë">Prishtinë</option>
-      <option value="Mitrovicë">Mitrovicë</option>
-      <option value="Pejë">Pejë</option>
+      <option value="Prishtina">Prishtina</option>
+      <option value="Mitrovica">Mitrovica</option>
+      <option value="Peja">Peja</option>
       <option value="Prizren">Prizren</option>
       <option value="Ferizaj">Ferizaj</option>
       <option value="Gjilan">Gjilan</option>
-      <option value="Gjakovë">Gjakovë</option>
+      <option value="Gjakove">Gjakove</option>
     </select>
   </div>
   <table class="approved_businesses_table">

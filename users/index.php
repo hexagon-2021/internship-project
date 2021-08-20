@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title></title>
-	 
 	 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -26,45 +25,45 @@
 	<form enctype="multipart/form-data" action="action.php" method="post" id="registerUi" style="display: block;">
 		<div class="signup-items">
 			<h1 class="signup">Regjistrimi Per Klient</h1>
-			<input type="text" name="name" placeholder="Emri i plot..." class="input">
+			<input type="text" name="name" placeholder="Full name..." class="input">
 			<input type="text" name="email" placeholder="Email..." class="input">
-			<input type="text" name="username" placeholder="Emri..." class="input">
-			<input type="password" name="pwd" placeholder="Fjalekalimi..." class="input">
-			<input type="password" name="pwdRepeat" placeholder="Perserit fjalekalimin..." class="input">
-			<input type="text" name="phone_number" placeholder="Numri i telefonit..." class="input">
-			<button type="submit" name="submit" class="pointer signinSignupButton">Regjistrohu</button>
+			<input type="text" name="username" placeholder="Username..." class="input">
+			<input type="password" name="pwd" placeholder="Password..." class="input">
+			<input type="password" name="pwdRepeat" placeholder="Repeat password..." class="input">
+			<input type="text" name="phone_number" placeholder="Phone number..." class="input">
+			<button type="submit" name="submit" class="pointer signinSignupButton">Sign up</button>
 			<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {
-						echo "<p>Mbushni te gjitha fushat!</p>";
+						echo "<p>Fill in all fields!</p>";
 					}
 					else if ($_GET["error"] == "invalidemail") {
-						echo "<p>Zgjidhni nje email te rregullt!</p>";
+						echo "<p>Choose a proper email!</p>";
 					}
 					else if ($_GET["error"] == "invaliduid") {
-						echo "<p>Zgjidhni nje emer te rregullt!</p>";
+						echo "<p>Choose a proper username!</p>";
 					}
 					else if ($_GET["error"] == "passwordsdontmatch") {
-						echo "<p>Fjalkalimi nuk pershtatet!</p>";
+						echo "<p>Password doesn't match!</p>";
 					}
 					else if ($_GET["error"] == "usernametaken") {
-						echo "<p>Emri i perdoruesit ekziston!</p>";
+						echo "<p>Username already taken!</p>";
 					}
 					else if ($_GET["error"] == "stmtfailed") {
-						echo "<p>Diqka shkoj gabim , provo perseri!</p>";
+						echo "<p>Some thing went wrong, try again!</p>";
 					}
 					else if ($_GET["error"] == "none") {
-						echo "<p>Ju jeni regjistruar!</p>";
+						echo "<p>You have signed up!</p>";
 					} 
 					else if ($_GET['error'] == "FjalkalimiDuhetTiKetSëPaku8Karaktere") {
-						echo "<p>Fjalekalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
+						echo "<p>Fjalkalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
 					}
 				}
 			?>
 		</div>
 	</form>
 		<div class="haveanAcc" id="haveanAccUsrers" style="display: block;">
-			<h1>Keni llogari? <a href="login.php">Regjistrohu</a></h1>
+			<h1>Have an account? <a href="login.php">Log in</a></h1>
 		</div>
 
 
@@ -73,42 +72,42 @@
 		<form enctype="multipart/form-data" action="../includes/signup.inc.php" method="post" id="registerBu" >
 		<div class="signup-items">
 			<h1 class="signup">Regjistrimi Per Biznes</h1>
-			<input type="text" name="name" placeholder="Emri i plot..." class="input">
+			<input type="text" name="name" placeholder="Full name..." class="input">
 			<input type="text" name="email" placeholder="Email..." class="input">
-			<input type="text" name="username" placeholder="Emri..." class="input">
-			<input type="password" name="pwd" placeholder="Fjalekalimi..." class="input">
-			<input type="password" name="pwdRepeat" placeholder="Perserit fjalekalimin..." class="input">
-			<input type="text" name="companyName" placeholder="Emri i kompanis..." class="input">
-			<input type="text" name="companyCity" placeholder="Qyteti i kompanis..." class="input">
-			<input type="text" name="phone_number" placeholder="Numri i telefonit..." class="input">
+			<input type="text" name="username" placeholder="Username..." class="input">
+			<input type="password" name="pwd" placeholder="Password..." class="input">
+			<input type="password" name="pwdRepeat" placeholder="Repeat password..." class="input">
+			<input type="text" name="companyName" placeholder="Company name..." class="input">
+			<input type="text" name="companyCity" placeholder="Company city..." class="input">
+			<input type="text" name="phone_number" placeholder="Phone number..." class="input">
 			<input type="file" name="document" placeholder="Dokumenti per vertetim te biznesit" class="input">
 			<span style="color: red;font-size: 20px;">Ju lutem te bashkangjitni nje file te formatit PDF, DOCX ose nje foto e cila verteton pronesine e biznesit tuaj!</span>
-			<button type="submit" name="submit" class="pointer signinSignupButton">Regjistrohu</button>
+			<button type="submit" name="submit" class="pointer signinSignupButton">Sign up</button>
 			<?php
 				if (isset($_GET["error"])) {
 					if ($_GET["error"] == "emptyinput") {
-						echo "<p>Mbush te gjitha fushat!</p>";
+						echo "<p>Fill in all fields!</p>";
 					}
 					else if ($_GET["error"] == "invalidemail") {
-						echo "<p>Zgjedh nje email te rregullt!</p>";
+						echo "<p>Choose a proper email!</p>";
 					}
 					else if ($_GET["error"] == "invaliduid") {
-						echo "<p>Zgjedh nje emer te rregullt!</p>";
+						echo "<p>Choose a proper username!</p>";
 					}
 					else if ($_GET["error"] == "passwordsdontmatch") {
-						echo "<p>Fjalkalimi nuk pershtatet!</p>";
+						echo "<p>Password doesn't match!</p>";
 					}
 					else if ($_GET["error"] == "usernametaken") {
-						echo "<p>Emri i perdoruesit ekziston!</p>";
+						echo "<p>Username already taken!</p>";
 					}
 					else if ($_GET["error"] == "stmtfailed") {
-						echo "<p>Diqka shkoj gabim , provoni perseri!</p>";
+						echo "<p>Some thing went wrong, try again!</p>";
 					}
 					else if ($_GET["error"] == "none") {
-						echo "<p>Jeni regjistruar!</p>";
+						echo "<p>You have signed up!</p>";
 					}
 					else if ($_GET["error"] == "companyNameExists") {
-						echo "<p>Emri i kompanis i zen!</p>";
+						echo "<p>Company name already taken!</p>";
 					} 
 					else if ($_GET['error'] == "docfs") {
 						echo "<p>Madhesia e file-it eshte shume e madhe!</p>";
@@ -120,14 +119,14 @@
 						echo "<p>Ky lloj i file-it nuk eshte i suportuar!</p>";
 					}
 					else if ($_GET['error'] == "FjalkalimiDuhetTiKetSëPaku8Karaktere") {
-						echo "<p>Fjalekalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
+						echo "<p>Fjalkalimi duhet ti ket së paku 8 karaktere , të përmbaj një shkronjë të madhe një të vogël dhe një numër!</p>";
 					}
 				}
 			?>
 		</div>
 	</form>
 		<div class="haveanAcc" id="haveanAccBusiness" >
-			<h1>Keni llogari? <a href="login.php">Kyqu</a></h1>
+			<h1>Have an account? <a href="login.php">Log in</a></h1>
 		</div>
 
 
